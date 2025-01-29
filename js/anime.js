@@ -9,7 +9,6 @@ containers.forEach((container, index) => {
       scrub: true,
       start: "top 50%",
       end: "top",
-      markers: true,
     },
   });
 
