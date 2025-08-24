@@ -257,7 +257,9 @@ const t = translations[lang];
     </footer>
     
     <!-- Load main.ts for SCSS and JavaScript functionality -->
-    <script type="module" src="/src/main.ts"></script>
+    <script>
+      import "../main.ts";
+    </script>
     
     <script is:inline>
       // TypeScript declaration for netlifyIdentity
