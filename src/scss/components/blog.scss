@@ -33,19 +33,32 @@
 // Blog Posts Section
 .blog-posts {
     .blog-posts__container {
-        margin: 5% 10%;
+        margin: 5% 7%;
     }
 
     .blog-posts__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
+        align-items: stretch;
+
+        >* {
+            min-width: 0;
+        }
+    }
+
+    .post-card-link {
+        display: block;
+        height: 100%;
     }
 
     .post-card {
         background-color: $orange;
         border-radius: 12px;
         box-shadow: 0 0 15px rgba($orange, 0.5);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
 
         &:hover {
             .post-image {
@@ -75,12 +88,16 @@
             object-fit: cover;
             border-radius: 12px 12px 0 0;
             transition: transform 0.3s ease;
+            display: block;
         }
     }
 
     .post-content {
         padding: 20px 30px;
         color: $white;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        flex: 1 1 auto;
 
         a {
             color: $white;
@@ -89,6 +106,7 @@
         .post-tags {
             display: flex;
             flex-direction: row;
+            flex-wrap: wrap;
             gap: 10px;
             margin: 15px 0;
 
@@ -133,6 +151,7 @@
     .post-tags {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         gap: 10px;
         margin: 15px 0;
 
@@ -149,6 +168,15 @@
         margin-top: 20px;
 
         a {
+            color: $white;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .blog-post {
+        .blog-post__container {
+            margin: 150px 10%;
             color: $white;
         }
     }
