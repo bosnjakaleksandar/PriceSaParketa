@@ -9,11 +9,10 @@
     }
 
     .footer__logo {
-
         img {
             width: 100%;
             height: auto;
-            max-height: 250px;
+            max-height: 220px;
         }
     }
 
@@ -123,6 +122,10 @@
     .footer {
         .footer__container {
             padding: 10px 0;
+        }
+
+        .footer__logo {
+            margin: 0 auto;
         }
 
         .footer__socials {
