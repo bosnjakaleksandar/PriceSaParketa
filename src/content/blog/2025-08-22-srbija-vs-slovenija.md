@@ -14,7 +14,7 @@ tags:
   - beograd
   - arena
 ---
-# Srpska dominacija pred EuroBasket
+## Srpska dominacija pred EuroBasket
 
 Srbija je u poslednjoj proveri pred EuroBasket pokazala da je glavni kandidat za titulu. Ubedljivim trijumfom nad Slovenijom (106–72), reprezentacija je poslala jasan signal čitavoj Evropi.
 

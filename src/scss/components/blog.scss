@@ -21,7 +21,7 @@
     .hero-blog__content {
         color: $white;
         text-align: center;
-        z-index: 2;
+        z-index: 1;
         position: relative;
     }
 
@@ -146,6 +146,28 @@
     .blog-post__container {
         margin: 250px 10%;
         color: $white;
+    }
+
+    // Limit font assignment to post body content
+    .post-content {
+        font-family: "Raleway";
+
+        h2 {
+            color: $orange;
+            margin-bottom: 20px;
+        }
+
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 10px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
     }
 
     .post-tags {

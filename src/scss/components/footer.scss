@@ -13,6 +13,7 @@
             width: 100%;
             height: auto;
             max-height: 220px;
+            max-width: 220px;
         }
     }
 
@@ -28,7 +29,6 @@
     .footer__list-wrapper {
         display: flex;
         flex-direction: row;
-        align-items: center;
         gap: 50px;
         flex-wrap: wrap;
     }
