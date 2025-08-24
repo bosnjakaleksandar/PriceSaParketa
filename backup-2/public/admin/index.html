@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Manager - Priče sa parketa</title>
+
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Administratorski panel za upravljanje sadržajem sajta Priče sa parketa"
+    />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta
+      http-equiv="Referrer-Policy"
+      content="strict-origin-when-cross-origin"
+    />
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Admin Panel - Priče sa parketa" />
+    <meta
+      property="og:description"
+      content="Administratorski panel za upravljanje sadržajem"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/logo.webp" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </head>
+  <body>
+    <!-- Include the script that builds the page and powers Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", (user) => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

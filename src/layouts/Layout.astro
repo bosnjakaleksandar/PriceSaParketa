@@ -1,0 +1,275 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: 'sr' | 'en';
+}
+
+const { 
+  title, 
+  description = "Najpopularniji košarkaški podcast u Srbiji i regionu", 
+  lang = 'sr' 
+} = Astro.props;
+
+const translations = {
+  sr: {
+    home: "Početna",
+    blog: "Blog", 
+    episodes: "Epizode",
+    about: "O meni",
+    contact: "Kontakt",
+    copyright: "&copy; 2025 Priče sa parketa. All rights reserved. Design and Development by @bosnjakaleksandar.",
+    contactUs: "Kontaktirajte nas"
+  },
+  en: {
+    home: "Home",
+    blog: "Blog",
+    episodes: "Episodes", 
+    about: "About me",
+    contact: "Contact",
+    copyright: "&copy; 2025 Stories from the Court. All rights reserved. Design and Development by @bosnjakaleksandar.",
+    contactUs: "Contact us"
+  }
+};
+
+const t = translations[lang];
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-55NXLV44");
+    </script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-FYY5MK66MW"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-FYY5MK66MW");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="košarka, podcast, Evroliga, ABA liga, Crvena zvezda, Partizan, Aleksandar Babić, košarkaški podcast Srbija, košarkaški savez srbije, srbija, balkan, kls, košarkaška liga srbije, juniori, kadeti, pioniri, mlađe kategorije, košarkaški turniri, košarkaški kampovi, košarkaški treneri, košarkaški sudije, košarkaški savezi, košarkaški klubovi"
+    />
+    <meta name="generator" content={Astro.generator} />
+    
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="canonical" href="https://pricesaparketa.netlify.app" />
+    <link
+      rel="alternate"
+      hreflang="sr"
+      href="https://pricesaparketa.netlify.app"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://pricesaparketa.netlify.app/en"
+    />
+
+    <meta property="og:url" content="https://pricesaparketa.netlify.app" />
+    <meta
+      property="og:image"
+      content="https://pricesaparketa.netlify.app/images/heroBanner.webp"
+    />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:width" content="1920" />
+    <meta property="og:image:height" content="1240" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta
+      name="twitter:image"
+      content="https://pricesaparketa.netlify.app/images/heroBanner.webp"
+    />
+    
+    <title>{title}</title>
+    
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    
+    <!-- Additional head content -->
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__container">
+        <a class="header__logo" href={lang === 'en' ? '/en' : '/'}
+          ><img src="/images/logo.webp" alt="logoPriceSaParketa"
+        /></a>
+        <nav class="header__nav">
+          <ul class="header__list">
+            <li class="header__item">
+              <a href={lang === 'en' ? '/en' : '/'} class="header__link rw-24-500">{t.home}</a>
+            </li>
+            <li class="header__item">
+              <a href={lang === 'en' ? '/en/blog' : '/blog'} class="header__link rw-24-500">{t.blog}</a>
+            </li>
+            <li class="header__item">
+              <a href="/coming-soon" class="header__link rw-24-500">{t.episodes}</a>
+            </li>
+            <li class="header__item">
+              <a href="/coming-soon" class="header__link rw-24-500">{t.about}</a>
+            </li>
+            <li class="header__item">
+              <a href="/coming-soon" class="header__link rw-24-500">{t.contact}</a>
+            </li>
+            <div class="header__lang-mobile">
+              <div class="custom-select">
+                <div class="custom-select__trigger">
+                  <img
+                    src={lang === 'en' ? "/images/english.png" : "/images/serbia.png"}
+                    alt={lang === 'en' ? "english" : "serbia"}
+                    class="custom-select__flag"
+                  />
+                  <span class="custom-select__arrow">▼</span>
+                </div>
+                <div class="custom-select__options">
+                  <div class="custom-select__option" data-value="sr">
+                    <img src="/images/serbia.png" alt="serbia" />
+                    <span class="rw-16-500">SRB</span>
+                  </div>
+                  <div class="custom-select__option" data-value="en">
+                    <img src="/images/english.png" alt="english" />
+                    <span class="rw-16-500">ENG</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ul>
+        </nav>
+        <div class="header__lang">
+          <div class="custom-select">
+            <div class="custom-select__trigger">
+              <img
+                src={lang === 'en' ? "/images/english.png" : "/images/serbia.png"}
+                alt={lang === 'en' ? "english" : "serbia"}
+                class="custom-select__flag"
+              />
+              <span class="custom-select__arrow">▼</span>
+            </div>
+            <div class="custom-select__options">
+              <div class="custom-select__option" data-value="sr">
+                <img src="/images/serbia.png" alt="serbia" />
+                <span class="rw-16-500">SRB</span>
+              </div>
+              <div class="custom-select__option" data-value="en">
+                <img src="/images/english.png" alt="english" />
+                <span class="rw-16-500">ENG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </header>
+    
+    <slot />
+    
+    <footer class="footer">
+      <div class="footer__container">
+        <div class="footer__top">
+          <a class="footer__logo" href={lang === 'en' ? '/en' : '/'}
+            ><img src="/images/footerlogo.png" alt="logoPriceSaParketa"
+          /></a>
+          <div class="footer__list-wrapper">
+            <div class="footer__info">
+              <p class="footer__contact rw-32-500">{t.contactUs}</p>
+              <a href="#" class="footer__email rw-32-500"
+                >aleksandarb@pricesaparketa.com</a
+              >
+            </div>
+            <ul class="footer__list">
+              <li class="footer__item">
+                <a href={lang === 'en' ? '/en' : '/'} class="footer__link rw-24-500">{t.home}</a>
+              </li>
+              <li class="footer__item">
+                <a href={lang === 'en' ? '/en/blog' : '/blog'} class="footer__link rw-24-500">{t.blog}</a>
+              </li>
+              <li class="footer__item">
+                <a href="/coming-soon" class="footer__link rw-24-500"
+                  >{t.episodes}</a
+                >
+              </li>
+            </ul>
+            <ul class="footer__list-two">
+              <li class="footer__item">
+                <a href="/coming-soon" class="footer__link rw-24-500">{t.about}</a>
+              </li>
+              <li class="footer__item">
+                <a href="/coming-soon" class="footer__link rw-24-500"
+                  >{t.contact}</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <hr class="footer__divider" />
+        <div class="footer__bottom">
+          <p class="footer__copyright rw-16-400" set:html={t.copyright}>
+          </p>
+          <div class="footer__socials">
+            <a
+              href="https://www.instagram.com/pricesaparketa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__social-link"
+              data-svg="instagram-logo-2"
+            ></a>
+            <a
+              href="https://www.youtube.com/@Pri%C4%8Desaparketa1"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="footer__social-link"
+              data-svg="youtube-logo-2"
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+    <!-- Load main.ts for SCSS and JavaScript functionality -->
+    <script type="module" src="/src/main.ts"></script>
+    
+    <script is:inline>
+      // TypeScript declaration for netlifyIdentity
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", function(user) {
+          if (!user) {
+            window.netlifyIdentity.on("login", function() {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

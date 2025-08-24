@@ -1,0 +1,34 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+body {
+    background-color: $black;
+}
+
+// * {
+//     border: 1px solid red;
+// }
+
+.container {
+    margin: 0 8%;
+
+    @include mq (768) {
+        margin: 0 5%;
+    }
+}
+
+.container11 {
+    margin: 0 11%;
+
+    @include mq (768) {
+        margin: 0 5%;
+    }
+}
+
+.container15 {
+    margin: 0 15%;
+
+    @include mq (768) {
+        margin: 0 5%;
+    }
+}

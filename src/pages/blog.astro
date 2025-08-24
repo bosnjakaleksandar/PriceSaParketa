@@ -1,0 +1,67 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+// Dobijamo sve blog postove
+const blogPosts = await getCollection('blog');
+
+// Sortiramo po datumu (najnoviji prvi)
+const sortedPosts = blogPosts.sort((a: CollectionEntry<'blog'>, b: CollectionEntry<'blog'>) => 
+  new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<Layout title="Blog - Priče sa parketa">
+  <main class="homepage">
+    <section class="hero-blog">
+      <div class="hero-blog__container">
+        <div class="hero-blog__content">
+          <h1 class="hero-blog__title rw-78-600">Blog</h1>
+          <p class="hero-blog__subtitle rw-54-500">
+            Najnovije priče i analize pravo sa terena
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-posts">
+      <div class="blog-posts__container">
+          <div class="blog-posts__grid">
+            {sortedPosts.map((post: CollectionEntry<'blog'>) => (
+              <a href={`/blog/${post.slug}`} class="post-card-link">
+                <article class="post-card">
+                  <div class="post-image">
+                    <img 
+                      src={post.data.image || "/images/HeroBanner.webp"} 
+                      alt={post.data.title} 
+                    />
+                  </div>
+                  <div class="post-content">
+                    <h2 class="post-title rw-36-600">
+                      {post.data.title}
+                    </h2>
+                    <p class="post-meta rw-16-400">
+                      {new Date(post.data.date).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
+                    </p>
+                    <p class="post-description rw-18-400">
+                      {post.data.description}
+                    </p>
+                    <div class="post-tags">
+                      {post.data.tags.map((tag: string) => (
+                        <span class="tag rw-14-500">{tag}</span>
+                      ))}
+                    </div>
+                    <span class="read-more rw-16-500">Pročitaj više</span>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+      </div>
+    </section>
+  </main>
+</Layout>
