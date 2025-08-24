@@ -23,6 +23,7 @@ export default defineConfig({
       input: {
         main: "./index.html",
         en: "./en/index.html",
+        "pages/coming-soon": "./pages/coming-soon.html",
       },
     },
     copyPublicDir: true,
