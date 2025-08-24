@@ -4,26 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
-    <!-- Include a div where Decap CMS will render -->
-    <div id="nc-root"></div>
-    <!-- A little script to redirect to login and initiate the login flow -->
+    <!-- Include the script that builds the page and powers Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      console.log('Admin page loaded');
-      console.log('Decap CMS available:', typeof window.DecapCmsApp !== 'undefined');
-      console.log('Netlify Identity available:', typeof window.netlifyIdentity !== 'undefined');
-      
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
-          console.log('Identity initialized, user:', user);
           if (!user) {
             window.netlifyIdentity.on("login", () => {
-              console.log('User logged in, redirecting...');
               document.location.href = "/admin/";
             });
           }
@@ -31,4 +22,5 @@
       }
     </script>
   </body>
+</html>
 </html>
