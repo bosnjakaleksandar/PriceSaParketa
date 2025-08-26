@@ -41,4 +41,11 @@ export function initBurgerMenu() {
       }, 400);
     }
   });
+
+  burger.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      burger.click();
+    }
+  });
 }
