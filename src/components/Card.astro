@@ -1,0 +1,61 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt: string;
+  className: string;
+  imagePosition?: 'left' | 'right';
+  links?: Array<{
+    href: string;
+    imageSrc: string;
+    alt: string;
+  }>;
+}
+
+const { 
+  title, 
+  description, 
+  imageSrc, 
+  imageAlt, 
+  className,
+  imagePosition = 'right',
+  links
+} = Astro.props;
+---
+
+<section class={`${className} card`}>
+  <div class={`${className}__container card__container | js-clip`}>
+    {imagePosition === 'left' && (
+      <div class={`${className}__image card__image`}>
+        <img src={imageSrc} alt={imageAlt} />
+      </div>
+    )}
+    
+    <div class={`${className}__content card__content`}>
+      <h2 class={`${className}__title card__title rw-36-600`}>{title}</h2>
+      <p class={`${className}__description card__description rw-18-400`} set:html={description} />
+      
+      {links && (
+        <div class={`${className}__links card__links`}>
+          {links.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={`${className}__link card__link`}
+            >
+              <img src={link.imageSrc} alt={link.alt} />
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+    
+    {imagePosition === 'right' && (
+      <div class={`${className}__image card__image`}>
+        <img src={imageSrc} alt={imageAlt} />
+      </div>
+    )}
+  </div>
+</section>

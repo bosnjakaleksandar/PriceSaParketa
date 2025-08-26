@@ -1,0 +1,39 @@
+---
+export interface Props {
+  title: string;
+  subtitle: string;
+  buttonText: string;
+  buttonHref: string;
+  buttonIcon?: string;
+}
+
+const { 
+  title, 
+  subtitle, 
+  buttonText, 
+  buttonHref,
+  buttonIcon = "play-circle"
+} = Astro.props;
+---
+
+<section class="hero">
+  <div class="hero__container">
+    <div class="hero__content">
+      <h1 class="hero__title rw-78-600">
+        {title}
+      </h1>
+      <p class="hero__subtitle rw-54-500">
+        {subtitle}
+      </p>
+      <a
+        class="hero__button rw-24-500"
+        data-svg={buttonIcon}
+        href={buttonHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {buttonText}
+      </a>
+    </div>
+  </div>
+</section>

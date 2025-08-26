@@ -1,0 +1,102 @@
+---
+export interface Props {
+  lang?: 'sr' | 'en';
+}
+
+const { lang = 'sr' } = Astro.props;
+
+const translations = {
+  sr: {
+    home: "Početna",
+    blog: "Blog", 
+    episodes: "Epizode",
+    about: "O meni",
+    contact: "Kontakt"
+  },
+  en: {
+    home: "Home",
+    blog: "Blog",
+    episodes: "Episodes", 
+    about: "About me",
+    contact: "Contact"
+  }
+};
+
+const t = translations[lang];
+---
+
+<header class="header">
+  <div class="header__container">
+    <a class="header__logo" href={lang === 'en' ? '/en' : '/'}
+      ><img src="/images/logo.webp" alt="logoPriceSaParketa"
+    /></a>
+    <nav class="header__nav">
+      <ul class="header__list">
+        <li class="header__item">
+          <a href={lang === 'en' ? '/en' : '/'} class="header__link rw-24-500">{t.home}</a>
+        </li>
+        <li class="header__item">
+          <a href={lang === 'en' ? '/en/blog' : '/blog'} class="header__link rw-24-500">{t.blog}</a>
+        </li>
+        <li class="header__item">
+          <a href="/coming-soon" class="header__link rw-24-500">{t.episodes}</a>
+        </li>
+        <li class="header__item">
+          <a href="/coming-soon" class="header__link rw-24-500">{t.about}</a>
+        </li>
+        <li class="header__item">
+          <a href="/coming-soon" class="header__link rw-24-500">{t.contact}</a>
+        </li>
+        <div class="header__lang-mobile">
+          <div class="custom-select">
+            <div class="custom-select__trigger">
+              <img
+                src={lang === 'en' ? "/images/english.png" : "/images/serbia.png"}
+                alt={lang === 'en' ? "english" : "serbia"}
+                class="custom-select__flag"
+              />
+              <span class="custom-select__arrow">▼</span>
+            </div>
+            <div class="custom-select__options">
+              <div class="custom-select__option" data-value="sr">
+                <img src="/images/serbia.png" alt="serbia" />
+                <span class="rw-16-500">SRB</span>
+              </div>
+              <div class="custom-select__option" data-value="en">
+                <img src="/images/english.png" alt="english" />
+                <span class="rw-16-500">ENG</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </nav>
+    <div class="header__lang">
+      <div class="custom-select">
+        <div class="custom-select__trigger">
+          <img
+            src={lang === 'en' ? "/images/english.png" : "/images/serbia.png"}
+            alt={lang === 'en' ? "english" : "serbia"}
+            class="custom-select__flag"
+          />
+          <span class="custom-select__arrow">▼</span>
+        </div>
+        <div class="custom-select__options">
+          <div class="custom-select__option" data-value="sr">
+            <img src="/images/serbia.png" alt="serbia" />
+            <span class="rw-16-500">SRB</span>
+          </div>
+          <div class="custom-select__option" data-value="en">
+            <img src="/images/english.png" alt="english" />
+            <span class="rw-16-500">ENG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>
