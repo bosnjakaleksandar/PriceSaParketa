@@ -19,3 +19,60 @@ collections:
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+
+  - name: "pages"
+    label: "Pages / Stranice"
+    folder: "src/content/pages"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {
+          label: "Title",
+          name: "title",
+          widget: "string",
+          hint: "Naslov stranice",
+        }
+      - {
+          label: "Language",
+          name: "language",
+          widget: "select",
+          options: ["sr", "en"],
+          hint: "Jezik stranice",
+        }
+      - label: "Hero Section"
+        name: "hero"
+        widget: "object"
+        hint: "Hero sekcija na vrhu stranice"
+        fields:
+          - {
+              label: "Hero Title",
+              name: "title",
+              widget: "string",
+              hint: "Veliki naslov na vrhu stranice",
+            }
+          - {
+              label: "Hero Description",
+              name: "description",
+              widget: "text",
+              hint: "Opis ispod hero naslova",
+            }
+          - {
+              label: "Button Text",
+              name: "buttonText",
+              widget: "string",
+              required: false,
+              hint: "Tekst na dugmetu",
+            }
+          - {
+              label: "Button Link",
+              name: "buttonLink",
+              widget: "string",
+              required: false,
+              hint: "Link za dugme",
+            }
+      - {
+          label: "Page Content",
+          name: "body",
+          widget: "markdown",
+          hint: "Glavni sadržaj stranice",
+        }

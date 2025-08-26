@@ -2,6 +2,16 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import Card from '../components/Card.astro';
+import { getCollection } from 'astro:content';
+
+const pages = await getCollection('pages');
+const homePage = pages.find(page => page.data.language === 'sr' && page.slug === 'home');
+
+if (!homePage) {
+  throw new Error('Homepage content not found');
+}
+
+const { data: pageData } = homePage;
 
 const aboutLinks = [
   {
@@ -23,15 +33,15 @@ const aboutLinks = [
 ---
 
 <Layout 
-  title="Priče sa parketa - Najpopularniji košarkaški podcast u Srbiji i regionu"
-  description="Priče sa parketa - Najpopularniji košarkaški podcast u Srbiji i regionu. Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts."
+  title={pageData.title + " - Priče sa parketa"}
+  description={pageData.hero.description + " - Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts."}
 >
   <main class="homepage">
     <Hero 
-      title="Ja sam Aleksandar Babić"
-      subtitle="Urednik i voditelj podcast emisije Priče sa parketa"
-      buttonText="Poslednja epizoda"
-      buttonHref="https://www.youtube.com/@Pri%C4%8Desaparketa1"
+      title={pageData.hero.title}
+      subtitle={pageData.hero.description}
+      buttonText={pageData.hero.buttonText || "Poslednja epizoda"}
+      buttonHref={pageData.hero.buttonLink || "https://www.youtube.com/@Pri%C4%8Desaparketa1"}
       buttonIcon="play-circle"
     />
     

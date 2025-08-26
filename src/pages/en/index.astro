@@ -1,33 +1,31 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import { getCollection } from 'astro:content';
+
+const pages = await getCollection('pages');
+const homePage = pages.find(page => page.data.language === 'en' && page.slug === 'home-en');
+
+if (!homePage) {
+  throw new Error('English homepage content not found');
+}
+
+const { data: pageData } = homePage;
 ---
 
 <Layout 
-  title="Priče sa parketa - Most popular basketball podcast in Serbia and the region"
-  description="Priče sa parketa - Most popular basketball podcast in Serbia and the region. EuroLeague, ABA League and eternal derby analysis. Listen on Spotify, YouTube and Apple Podcasts."
+  title={pageData.title + " - Priče sa parketa"}
+  description={pageData.hero.description + " - EuroLeague, ABA League and eternal derby analysis. Listen on Spotify, YouTube and Apple Podcasts."}
   lang="en"
 >
   <main class="homepage">
-    <section class="hero">
-      <div class="hero__container">
-        <div class="hero__content">
-          <h1 class="hero__title rw-78-600">
-            I am Aleksandar Babić
-          </h1>
-          <p class="hero__subtitle rw-54-500">
-            Editor and host of the podcast show Stories from the Court
-          </p>
-          <a
-            class="hero__button rw-24-500"
-            data-svg="play-circle"
-            href="https://www.youtube.com/@Pri%C4%8Desaparketa1"
-            target="_blank"
-            rel="noopener noreferrer"
-            >Latest episode</a
-          >
-        </div>
-      </div>
-    </section>
+    <Hero 
+      title={pageData.hero.title}
+      subtitle={pageData.hero.description}
+      buttonText={pageData.hero.buttonText || "Latest episode"}
+      buttonHref={pageData.hero.buttonLink || "https://www.youtube.com/@Pri%C4%8Desaparketa1"}
+      buttonIcon="play-circle"
+    />
     
     <section class="about card">
       <div class="about__container card__container | js-clip">
