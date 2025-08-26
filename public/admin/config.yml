@@ -70,6 +70,68 @@ collections:
               required: false,
               hint: "Link za dugme",
             }
+      - label: "Sections"
+        name: "sections"
+        widget: "list"
+        required: false
+        hint: "Sekcije na stranici (Card komponente)"
+        fields:
+          - {
+              label: "CSS Class Name",
+              name: "className",
+              widget: "string",
+              hint: "CSS klasa za sekciju (npr. about, euroleague, abaleague, derby)",
+            }
+          - {
+              label: "Section Title",
+              name: "title",
+              widget: "string",
+              hint: "Naslov sekcije",
+            }
+          - {
+              label: "Section Description",
+              name: "description",
+              widget: "markdown",
+              hint: "Opis sekcije",
+            }
+          - {
+              label: "Section Image",
+              name: "image",
+              widget: "image",
+              required: false,
+              hint: "Slika za sekciju",
+            }
+          - {
+              label: "Image Position",
+              name: "imagePosition",
+              widget: "select",
+              options: ["left", "right"],
+              default: "right",
+              hint: "Pozicija slike (levo ili desno)",
+            }
+          - label: "Links"
+            name: "links"
+            widget: "list"
+            required: false
+            hint: "Linkovi za sekciju (npr. Spotify, YouTube, Apple Podcasts)"
+            fields:
+              - { label: "Link URL", name: "href", widget: "string" }
+              - { label: "Link Image", name: "imageSrc", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - {
+              label: "Button Text",
+              name: "buttonText",
+              widget: "string",
+              required: false,
+              hint: "Tekst na dugmetu sekcije",
+            }
+          - {
+              label: "Button Link",
+              name: "buttonLink",
+              widget: "string",
+              required: false,
+              hint: "Link za dugme sekcije",
+            }
       - {
           label: "Page Content",
           name: "body",

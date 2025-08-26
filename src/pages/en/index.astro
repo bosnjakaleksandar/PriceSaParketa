@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import Hero from '../../components/Hero.astro';
+import Card from '../../components/Card.astro';
 import { getCollection } from 'astro:content';
 
 const pages = await getCollection('pages');
@@ -27,124 +28,18 @@ const { data: pageData } = homePage;
       buttonIcon="play-circle"
     />
     
-    <section class="about card">
-      <div class="about__container card__container | js-clip">
-        <div class="about__content card__content">
-          <h2 class="about__title card__title rw-36-600">Priče sa parketa</h2>
-          <p class="about__description card__description rw-18-400">
-            Our podcast is where basketball lives off the court! Whether
-            you're a fan of the EuroLeague, ABA League, or follow eternal
-            rivals, here you'll find analyses, commentary, and conversations
-            that go deeper than just the scores. Each episode brings reviews
-            of key games, tactical details, interesting stories from the
-            basketball world, and interviews with players, coaches, and
-            experts. We discuss everything from current team forms, rivalries,
-            to young talents who show promise.
-            <br />
-            <br />
-            Join us and listen to us on your favorite platforms! Stay up to
-            date with all basketball happenings and be part of a community
-            that shares the same passion for the game.
-          </p>
-          <div class="about__links card__links">
-            <a
-              href="https://open.spotify.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="about__link card__link"
-            >
-              <img src="/images/Spotify.png" alt="spotify"
-            /></a>
-            <a
-              href="https://www.youtube.com/@Pri%C4%8Desaparketa1"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="about__link card__link"
-            >
-              <img src="/images/YouTube.png" alt="youtube"
-            /></a>
-            <a
-              href="https://podcasts.apple.com/us/browse"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="about__link card__link"
-            >
-              <img src="/images/Apple Podcasts.png" alt="apple-podcast"
-            /></a>
-          </div>
-        </div>
-        <div class="about__image card__image">
-          <img src="/images/logo.webp" alt="logo" />
-        </div>
-      </div>
-    </section>
-    
-    <section class="euroleague card">
-      <div class="euroleague__container card__container | js-clip">
-        <div class="euroleague__image card__image">
-          <img src="/images/euroleague.webp" alt="euroleague-logo" />
-        </div>
-        <div class="euroleague__content card__content">
-          <h2 class="euroleague__title card__title rw-36-600">EuroLeague</h2>
-          <p class="euroleague__description card__description rw-18-400">
-            The EuroLeague is the most elite European basketball competition,
-            where the best teams compete for prestige and the championship
-            title. Every game brings excitement, unpredictability, and
-            unforgettable moments that unite basketball lovers around the
-            world. On our website, you can find the EuroLeague table and
-            results, while on our Instagram page we daily share the most
-            interesting moments, statistics, and stories from the court. If
-            you're a true basketball enthusiast, be sure to listen to our
-            podcast, where we analyze games, teams, and players in detail,
-            with expert guests and former players.
-          </p>
-        </div>
-      </div>
-    </section>
-    
-    <section class="abaleague card">
-      <div class="abaleague__container card__container | js-clip">
-        <div class="abaleague__content card__content">
-          <h2 class="abaleague__title card__title rw-36-600">ABA League</h2>
-          <p class="abaleague__description card__description rw-18-400">
-            The ABA League is the perfect place for all basketball lovers in
-            the Balkans! This competition brings together the best teams from
-            the region, delivering exciting games, rivalries, and young
-            talents who shape the future of European basketball. On our
-            website, you can follow results and standings. On our Instagram
-            page, we share the best plays, interesting stories, and the most
-            important moments from the court. Additionally, our podcast is the
-            perfect place for deeper analysis, conversations with experts, and
-            reviews of key moments of the season.
-          </p>
-        </div>
-        <div class="abaleague__image card__image">
-          <img src="/images/abaleague.webp" alt="aba-league-logo" />
-        </div>
-      </div>
-    </section>
-    
-    <section class="derby card">
-      <div class="derby__container card__container | js-clip">
-        <div class="derby__image card__image">
-          <img src="/images/derby.webp" alt="derby-logo" />
-        </div>
-        <div class="derby__content card__content">
-          <h2 class="derby__title card__title rw-36-600">Eternal Derby</h2>
-          <p class="derby__description card__description rw-18-400">
-            The eternal derby between Red Star and Partizan is more than just
-            a game - it's passion, tradition, and an indelible part of Serbian
-            basketball history. This rivalry, which has lasted for decades,
-            brings unforgettable moments, epic clashes, and stories that are
-            retold across generations. On our website, you can follow results
-            and analysis of every game, while on our Instagram page we share
-            the most exciting moments, fan scenes, and exclusive interviews.
-            Also, our podcast provides deeper insight into this legendary
-            duel, with expert commentary, locker room stories, and appearances
-            by former players and coaches.
-          </p>
-        </div>
-      </div>
-    </section>
+    {pageData.sections && pageData.sections.map((section, index) => (
+      <Card 
+        className={section.className}
+        title={section.title}
+        description={section.description}
+        imageSrc={section.image || "/images/logo.webp"}
+        imageAlt={section.title}
+        imagePosition={section.imagePosition}
+        links={section.links}
+        buttonText={section.buttonText}
+        buttonHref={section.buttonLink}
+      />
+    ))}
   </main>
 </Layout>

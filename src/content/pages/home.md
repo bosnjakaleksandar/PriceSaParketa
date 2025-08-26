@@ -6,10 +6,35 @@ hero:
   description: "Urednik i voditelj podcast emisije Priče sa parketa"
   buttonText: "Poslednja epizoda"
   buttonLink: "https://www.youtube.com/@Pri%C4%8Desaparketa1"
+sections:
+  - className: "about"
+    title: "Priče sa parketa"
+    description: "Naš podcast je mesto gde košarka živi van terena! Bilo da ste fan Evrolige, ABA lige ili pratite večite rivale, ovde ćete pronaći analize, komentare i razgovore koji idu dublje od rezultata. Svaka epizoda donosi osvrte na ključne utakmice, taktičke detalje, zanimljive priče iz sveta košarke i intervjue sa igračima, trenerima i stručnjacima. Diskutujemo o svemu od trenutnih formi timova, preko rivalstava, do mladih talenata koji obećavaju.<br /><br />Pridružite nam se i slušajte nas na vašim omiljenim platformama! Ostanite u toku sa svim košarkaškim dešavanjima i budite deo zajednice koja deli istu strast prema igri."
+    image: "/images/logo.webp"
+    imagePosition: "right"
+    links:
+      - href: "https://open.spotify.com/"
+        imageSrc: "/images/Spotify.png"
+        alt: "spotify"
+      - href: "https://www.youtube.com/@Pri%C4%8Desaparketa1"
+        imageSrc: "/images/YouTube.png"
+        alt: "youtube"
+      - href: "https://podcasts.apple.com/us/browse"
+        imageSrc: "/images/Apple Podcasts.png"
+        alt: "apple-podcast"
+  - className: "euroleague"
+    title: "Evroliga"
+    description: "Evroliga je najelitnije takmičenje evropske košarke, gde se najbolji timovi bore za prestiž i titulu šampiona. Svaka utakmica donosi uzbuđenje, neizvesnost i nezaboravne momente koji okupljaju ljubitelje košarke širom sveta. Na našem sajtu možete pronaći tabelu i rezultate iz Evrolige, dok na Instagram stranici svakodnevno delimo najzanimljivije trenutke, statistike i priče sa terena. Ako ste pravi zaljubljenik u košarku, obavezno poslušajte naš podcast, gde detaljno analiziramo utakmice, timove i igrače, uz gostovanja stručnjaka i bivših igrača."
+    image: "/images/euroleague.webp"
+    imagePosition: "left"
+  - className: "abaleague"
+    title: "ABA Liga"
+    description: "Aba liga je pravo mesto za sve ljubitelje košarke na Balkanu! Ovo takmičenje okuplja najbolje timove iz regiona, donoseći uzbudljive utakmice, rivalstva i mlade talente koji oblikuju budućnost evropske košarke. Na našem sajtu možete pratiti rezultate i tabelu. Na Instagram stranici delimo najlepše poteze, zanimljive priče i najvažnije trenutke sa parketa. Uz to, naš podcast je savršeno mesto za dublje analize, razgovore sa stručnjacima i osvrte na ključne momente sezone."
+    image: "/images/abaleague.webp"
+    imagePosition: "right"
+  - className: "derby"
+    title: "Večiti derbi"
+    description: "Večiti derbi između Crvene zvezde i Partizana je više od obične utakmice to je strast, tradicija i neizbrisiv deo srpske košarkaške istorije. Ovaj rivalitet, koji traje decenijama, donosi nezaboravne trenutke, epske okršaje i priče koje se prepričavaju generacijama. Na našem sajtu možete pratiti rezultate i analize svake utakmice, dok na Instagram stranici delimo najuzbudljivije trenutke, navijačke scene i ekskluzivne intervjue. Takođe, naš podcast pruža dublji uvid u ovaj legendarni duel, sa stručnim komentarima, pričama iz svlačionice i gostovanjima bivših igrača i trenera."
+    image: "/images/derby.webp"
+    imagePosition: "left"
 ---
-
-# Dobrodošli na Priče sa parketa
-
-Ovde možete urediti sadržaj početne stranice kroz Decap CMS.
-
-Priče sa parketa je podcast posvećen košarci, gde donosimo najnovije vesti, analize utakmica i ekskluzivne intervjue.

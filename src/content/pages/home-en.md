@@ -6,10 +6,35 @@ hero:
   description: "Editor and host of the podcast show Priče sa parketa"
   buttonText: "Latest episode"
   buttonLink: "https://www.youtube.com/@Pri%C4%8Desaparketa1"
+sections:
+  - className: "about"
+    title: "Priče sa parketa"
+    description: "Our podcast is where basketball lives off the court! Whether you're a fan of the EuroLeague, ABA League, or follow eternal rivals, here you'll find analyses, commentary, and conversations that go deeper than just the scores. Each episode brings reviews of key games, tactical details, interesting stories from the basketball world, and interviews with players, coaches, and experts. We discuss everything from current team forms, rivalries, to young talents who show promise.<br /><br />Join us and listen to us on your favorite platforms! Stay up to date with all basketball happenings and be part of a community that shares the same passion for the game."
+    image: "/images/logo.webp"
+    imagePosition: "right"
+    links:
+      - href: "https://open.spotify.com/"
+        imageSrc: "/images/Spotify.png"
+        alt: "spotify"
+      - href: "https://www.youtube.com/@Pri%C4%8Desaparketa1"
+        imageSrc: "/images/YouTube.png"
+        alt: "youtube"
+      - href: "https://podcasts.apple.com/us/browse"
+        imageSrc: "/images/Apple Podcasts.png"
+        alt: "apple-podcast"
+  - className: "euroleague"
+    title: "EuroLeague"
+    description: "The EuroLeague is the most elite European basketball competition, where the best teams compete for prestige and the championship title. Every game brings excitement, unpredictability, and unforgettable moments that unite basketball lovers around the world. On our website, you can find the EuroLeague table and results, while on our Instagram page we daily share the most interesting moments, statistics, and stories from the court. If you're a true basketball enthusiast, be sure to listen to our podcast, where we analyze games, teams, and players in detail, with expert guests and former players."
+    image: "/images/euroleague.webp"
+    imagePosition: "left"
+  - className: "abaleague"
+    title: "ABA League"
+    description: "The ABA League is the perfect place for all basketball lovers in the Balkans! This competition brings together the best teams from the region, delivering exciting games, rivalries, and young talents who shape the future of European basketball. On our website, you can follow results and standings. On our Instagram page, we share the best plays, interesting stories, and the most important moments from the court. Additionally, our podcast is the perfect place for deeper analysis, conversations with experts, and reviews of key moments of the season."
+    image: "/images/abaleague.webp"
+    imagePosition: "right"
+  - className: "derby"
+    title: "Eternal Derby"
+    description: "The eternal derby between Red Star and Partizan is more than just a game - it's passion, tradition, and an indelible part of Serbian basketball history. This rivalry, which has lasted for decades, brings unforgettable moments, epic clashes, and stories that are retold across generations. On our website, you can follow results and analysis of every game, while on our Instagram page we share the most exciting moments, fan scenes, and exclusive interviews. Also, our podcast provides deeper insight into this legendary duel, with expert commentary, locker room stories, and appearances by former players and coaches."
+    image: "/images/derby.webp"
+    imagePosition: "left"
 ---
-
-# Welcome to Stories from the Court
-
-Here you can edit the homepage content through Decap CMS.
-
-Stories from the Court is a podcast dedicated to basketball, where we bring the latest news, game analysis and exclusive interviews.

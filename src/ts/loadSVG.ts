@@ -1,4 +1,7 @@
-const svgIconModules = import.meta.glob("/src/svg/*.svg", { as: "raw" });
+const svgIconModules = import.meta.glob("/src/svg/*.svg", {
+  query: "?raw",
+  import: "default",
+});
 
 async function loadSVG(element: HTMLElement, svgName: string) {
   const path = `/src/svg/${svgName}.svg`;

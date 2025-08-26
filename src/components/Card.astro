@@ -11,6 +11,8 @@ export interface Props {
     imageSrc: string;
     alt: string;
   }>;
+  buttonText?: string;
+  buttonHref?: string;
 }
 
 const { 
@@ -20,7 +22,9 @@ const {
   imageAlt, 
   className,
   imagePosition = 'right',
-  links
+  links,
+  buttonText,
+  buttonHref
 } = Astro.props;
 ---
 
@@ -48,6 +52,19 @@ const {
               <img src={link.imageSrc} alt={link.alt} />
             </a>
           ))}
+        </div>
+      )}
+      
+      {buttonText && buttonHref && (
+        <div class={`${className}__button card__button`}>
+          <a
+            href={buttonHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button--primary"
+          >
+            {buttonText}
+          </a>
         </div>
       )}
     </div>
