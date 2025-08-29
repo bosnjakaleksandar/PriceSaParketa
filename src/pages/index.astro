@@ -1,45 +1,51 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Card from '../components/Card.astro';
-import { getCollection } from 'astro:content';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Card from "../components/Card.astro";
+import { getCollection } from "astro:content";
 
-const pages = await getCollection('pages');
-const homePage = pages.find(page => page.data.language === 'sr' && page.slug === 'home');
+const pages = await getCollection("pages");
+const homePage = pages.find(
+  (page) => page.data.language === "sr" && page.slug === "home",
+);
 
 if (!homePage) {
-  throw new Error('Homepage content not found');
+  throw new Error("Homepage content not found");
 }
 
 const { data: pageData } = homePage;
 ---
 
-<Layout 
+<Layout
   title={pageData.title + " - Priče sa parketa"}
-  description={pageData.hero.description + " - Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts."}
+  description={pageData.hero.description +
+    " - Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts."}
 >
   <main class="homepage">
-    <Hero 
+    <Hero
       title={pageData.hero.title}
       subtitle={pageData.hero.description}
       buttonText={pageData.hero.buttonText || "Poslednja epizoda"}
-      buttonHref={pageData.hero.buttonLink || "https://www.youtube.com/@Pri%C4%8Desaparketa1"}
+      buttonHref={pageData.hero.buttonLink ||
+        "https://www.youtube.com/@Pri%C4%8Desaparketa1"}
       buttonIcon="play-circle"
     />
-    
-        {/* Sections from CMS */}
-    {pageData.sections && pageData.sections.map((section, index) => (
-      <Card 
-        className={section.className}
-        title={section.title}
-        description={section.description}
-        imageSrc={section.image || "/images/logo.webp"}
-        imageAlt={section.title}
-        imagePosition={section.imagePosition}
-        links={section.links}
-        buttonText={section.buttonText}
-        buttonHref={section.buttonLink}
-      />
-    ))}
+
+    {
+      pageData.sections &&
+        pageData.sections.map((section, index) => (
+          <Card
+            className={section.className}
+            title={section.title}
+            description={section.description}
+            imageSrc={section.image || "/images/logo.webp"}
+            imageAlt={section.title}
+            imagePosition={section.imagePosition}
+            links={section.links}
+            buttonText={section.buttonText}
+            buttonHref={section.buttonLink}
+          />
+        ))
+    }
   </main>
 </Layout>

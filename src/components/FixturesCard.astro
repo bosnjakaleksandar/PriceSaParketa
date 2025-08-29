@@ -1,0 +1,139 @@
+---
+const schedulesRes = await fetch(
+  "https://api-live.euroleague.net/v1/schedules?seasonCode=e2025",
+);
+const clubsRes = await fetch("https://api-live.euroleague.net/v2/clubs");
+const xml = await schedulesRes.text();
+
+let clubLogosByName: Record<string, string> = {};
+let clubLogosByCode: Record<string, string> = {};
+try {
+  if (clubsRes.ok) {
+    const clubsData = await clubsRes.json();
+    if (clubsData?.data) {
+      for (const club of clubsData.data) {
+        const crest = club?.images?.crest;
+        if (!crest) continue;
+        if (club.code) clubLogosByCode[club.code] = crest;
+        if (club.name) clubLogosByName[club.name.toLowerCase().trim()] = crest;
+        if (club.shortName)
+          clubLogosByName[club.shortName.toLowerCase().trim()] = crest;
+        if (club.displayName)
+          clubLogosByName[club.displayName.toLowerCase().trim()] = crest;
+      }
+    }
+  }
+} catch (e) {}
+
+function parseFixtures(xml: string) {
+  xml = xml.replace(/\r?\n|\r/g, "").replace(/\s{2,}/g, " ");
+
+  const itemRegex = /<item>(.*?)<\/item>/g;
+  const items = [];
+  let match;
+  while ((match = itemRegex.exec(xml)) !== null) {
+    const itemXml = match[1];
+
+    function getTag(tag: string) {
+      const tagMatch = itemXml.match(new RegExp(`<${tag}>(.*?)<\/${tag}>`));
+      return tagMatch ? tagMatch[1] : "";
+    }
+
+    items.push({
+      gameday: getTag("gameday"),
+      date: getTag("date"),
+      startime: getTag("startime"),
+      hometeam: getTag("hometeam"),
+      awayteam: getTag("awayteam"),
+      arenaname: getTag("arenaname"),
+      arenacode: getTag("arenacode"),
+      arenacapacity: getTag("arenacapacity"),
+      round: getTag("round"),
+      group: getTag("group"),
+    });
+  }
+  return items;
+}
+
+const fixtures = parseFixtures(xml);
+
+function findCrestForTeam(teamName: string) {
+  if (!teamName) return "";
+  const key = teamName.toLowerCase().trim();
+  if (clubLogosByName[key]) return clubLogosByName[key];
+  for (const nameKey in clubLogosByName) {
+    if (nameKey.includes(key) || key.includes(nameKey))
+      return clubLogosByName[nameKey];
+  }
+  if (clubLogosByCode[teamName]) return clubLogosByCode[teamName];
+  return "";
+}
+
+let nextGameday = "";
+let nextFixtures: typeof fixtures = [];
+if (fixtures.length > 0) {
+  const today = new Date();
+  function parseDate(dateStr: string) {
+    return new Date(dateStr);
+  }
+  for (const fixture of fixtures) {
+    const fixtureDate = parseDate(fixture.date);
+    if (fixtureDate >= today) {
+      nextGameday = fixture.gameday;
+      break;
+    }
+  }
+  nextFixtures = fixtures.filter((f) => f.gameday === nextGameday);
+}
+---
+
+<section class="fixtures">
+  <div class="fixtures__container">
+    {nextFixtures.length === 0 && <p>Nema dostupnih podataka.</p>}
+    {
+      nextGameday && nextFixtures.length > 0 && (
+        <h2 class="fixtures__title rw-36-600">
+          Sledeće kolo: {nextGameday} ({nextFixtures[0].group})
+        </h2>
+      )
+    }
+
+    <div class="swiper fixtures-swiper">
+      <div class="swiper-wrapper">
+        {
+          nextFixtures.map((fixture) => (
+            <div class="swiper-slide">
+              <div class="fixture">
+                <div class="fixture__teams">
+                  <div class="fixture__team">
+                    {findCrestForTeam(fixture.hometeam) ? (
+                      <img
+                        src={findCrestForTeam(fixture.hometeam)}
+                        alt={`${fixture.hometeam} crest`}
+                      />
+                    ) : null}
+                  </div>
+                  <div class="fixture__vs rw-32-500">vs</div>
+                  <div class="fixture__team">
+                    {findCrestForTeam(fixture.awayteam) ? (
+                      <img
+                        src={findCrestForTeam(fixture.awayteam)}
+                        alt={`${fixture.awayteam} crest`}
+                      />
+                    ) : null}
+                  </div>
+                </div>
+                <div class="rw-16-600">
+                  {fixture.date} {fixture.startime}
+                </div>
+                <div class="rw-16-500">
+                  {fixture.arenaname} ({fixture.arenacapacity})
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

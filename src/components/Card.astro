@@ -5,7 +5,7 @@ export interface Props {
   imageSrc: string;
   imageAlt: string;
   className: string;
-  imagePosition?: 'left' | 'right';
+  imagePosition?: "left" | "right";
   links?: Array<{
     href: string;
     imageSrc: string;
@@ -15,64 +15,75 @@ export interface Props {
   buttonHref?: string;
 }
 
-const { 
-  title, 
-  description, 
-  imageSrc, 
-  imageAlt, 
+const {
+  title,
+  description,
+  imageSrc,
+  imageAlt,
   className,
-  imagePosition = 'right',
+  imagePosition = "right",
   links,
   buttonText,
-  buttonHref
+  buttonHref,
 } = Astro.props;
 ---
 
 <section class={`${className} card`}>
   <div class={`${className}__container card__container | js-clip`}>
-    {imagePosition === 'left' && (
-      <div class={`${className}__image card__image`}>
-        <img src={imageSrc} alt={imageAlt} />
-      </div>
-    )}
-    
+    {
+      imagePosition === "left" && (
+        <div class={`${className}__image card__image`}>
+          <img src={imageSrc} alt={imageAlt} />
+        </div>
+      )
+    }
+
     <div class={`${className}__content card__content`}>
       <h2 class={`${className}__title card__title rw-36-600`}>{title}</h2>
-      <p class={`${className}__description card__description rw-18-400`} set:html={description} />
-      
-      {links && (
-        <div class={`${className}__links card__links`}>
-          {links.map((link) => (
+      <p
+        class={`${className}__description card__description rw-18-400`}
+        set:html={description}
+      />
+
+      {
+        links && (
+          <div class={`${className}__links card__links`}>
+            {links.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`${className}__link card__link`}
+              >
+                <img src={link.imageSrc} alt={link.alt} />
+              </a>
+            ))}
+          </div>
+        )
+      }
+
+      {
+        buttonText && buttonHref && (
+          <div class={`${className}__button card__button`}>
             <a
-              href={link.href}
+              href={buttonHref}
               target="_blank"
               rel="noopener noreferrer"
-              class={`${className}__link card__link`}
+              class="button button--primary"
             >
-              <img src={link.imageSrc} alt={link.alt} />
+              {buttonText}
             </a>
-          ))}
-        </div>
-      )}
-      
-      {buttonText && buttonHref && (
-        <div class={`${className}__button card__button`}>
-          <a
-            href={buttonHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button--primary"
-          >
-            {buttonText}
-          </a>
-        </div>
-      )}
+          </div>
+        )
+      }
     </div>
-    
-    {imagePosition === 'right' && (
-      <div class={`${className}__image card__image`}>
-        <img src={imageSrc} alt={imageAlt} />
-      </div>
-    )}
+
+    {
+      imagePosition === "right" && (
+        <div class={`${className}__image card__image`}>
+          <img src={imageSrc} alt={imageAlt} />
+        </div>
+      )
+    }
   </div>
 </section>

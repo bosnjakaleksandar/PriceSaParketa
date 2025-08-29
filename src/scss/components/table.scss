@@ -1,0 +1,83 @@
+@use '../base' as *;
+
+.table {
+    .table__container {
+        margin: 5% 10%;
+    }
+
+    .table__wrapper {
+        background-color: $orange;
+        box-shadow: 0 0 30px rgba($orange, 0.5);
+        border-radius: 12px;
+        width: 100%;
+        padding: 30px 50px;
+    }
+
+    .table__standings {
+        width: 100%;
+
+        th {
+            img {
+                width: 40px;
+                height: 40px;
+            }
+
+            padding-bottom: 10px;
+        }
+
+        tr {
+            text-align: left;
+            border-bottom: $black 1px solid;
+        }
+
+        td {
+            padding: 10px 0;
+        }
+
+        .table__logo {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .table__number {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 13px 0;
+        }
+
+        .table__number--top6 {
+            background-color: $green;
+            border-radius: 50%;
+        }
+
+        .table__number--top10 {
+            background-color: $secondary;
+            border-radius: 50%;
+        }
+    }
+
+    @media screen and (max-width: 991px) {
+        .table__container {
+            margin: 5% 5%;
+        }
+
+        .table__wrapper {
+            padding: 15px 20px;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .table__standings {
+            min-width: 600px;
+        }
+
+        .table__standings th,
+        .table__standings td {
+            white-space: nowrap;
+        }
+    }
+}

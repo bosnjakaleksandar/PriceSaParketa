@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "astro": "^5.13.3",
-    "gsap": "^3.13.0"
+    "gsap": "^3.13.0",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.90.0"
   }
 }

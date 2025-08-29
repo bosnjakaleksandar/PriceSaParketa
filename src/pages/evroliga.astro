@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import EuroleagueTable from "../components/EuroleagueTable.astro";
+import FixturesCard from "../components/FixturesCard.astro";
+import HeroSmall from "../components/HeroSmall.astro";
+
+const pageData = {
+  title: "Evroliga",
+  hero: {
+    title: "Evroliga",
+    description:
+      "Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts.",
+  },
+};
+---
+
+<Layout
+  title={pageData.title + " - Priče sa parketa"}
+  description={pageData.hero.description +
+    " - Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts."}
+>
+  <main class="euroleague">
+    <HeroSmall />
+    <EuroleagueTable />
+    <FixturesCard />
+  </main>
+</Layout>
