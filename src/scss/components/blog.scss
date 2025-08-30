@@ -1,4 +1,5 @@
 @use '../base' as *;
+@use 'sass:color';
 
 // Hero Blog Section
 .hero-blog {
@@ -99,10 +100,6 @@
         word-break: break-word;
         flex: 1 1 auto;
 
-        a {
-            color: $white;
-        }
-
         .post-tags {
             display: flex;
             flex-direction: row;
@@ -168,6 +165,8 @@
             width: 100%;
             height: auto;
         }
+
+        margin-bottom: 40px;
     }
 
     .post-tags {
@@ -186,11 +185,34 @@
         }
     }
 
-    .post-footer {
-        margin-top: 20px;
+    .back-link {
+        background-color: $orange;
+        box-shadow: 0 0 15px rgba($orange, 0.5);
+        color: $white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        gap: 10px;
+        transition: all 0.3s ease;
 
-        a {
-            color: $white;
+        svg {
+            transform: rotate(180deg);
+            fill: $white;
+            transition: all 0.3s ease;
+        }
+
+        &:hover {
+            background-color: color.scale($orange, $lightness: -10%);
+            transform: scale(1.05);
+            color: $black;
+
+            svg {
+                transform: translateX(-8px) rotate(180deg);
+                fill: $black;
+            }
         }
     }
 }

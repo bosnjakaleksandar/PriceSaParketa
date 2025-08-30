@@ -6,22 +6,19 @@ import HeroSmall from '../components/HeroSmall.astro';
 
 const pageData = {
   title: 'Evroliga',
+  description:
+    'Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts.',
   hero: {
     title: 'Evroliga',
-    description:
-      'Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts.',
+    description: 'Pregled tabele i rasporeda utakmica',
   },
 };
 ---
 
-<Layout
-  title={pageData.title + ' - Priče sa parketa'}
-  description={pageData.hero.description +
-    ' - Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts.'}
->
+<Layout title={pageData.title + ' - Priče sa parketa'} description={pageData.description} lang="sr">
   <main class="euroleague">
-    <HeroSmall />
+    <HeroSmall title={pageData.title} description={pageData.hero.description} />
     <EuroleagueTable />
-    <FixturesCard />
+    <FixturesCard lang="sr" />
   </main>
 </Layout>

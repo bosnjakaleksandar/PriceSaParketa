@@ -1,59 +1,67 @@
 export function initCustomSelect() {
-  const customSelects = document.querySelectorAll(
-    ".custom-select"
-  ) as NodeListOf<HTMLElement>;
+  const customSelects = document.querySelectorAll('.custom-select') as NodeListOf<HTMLElement>;
 
   customSelects.forEach((customSelect) => {
-    const trigger = customSelect.querySelector(
-      ".custom-select__trigger"
-    ) as HTMLElement;
-    const options = customSelect.querySelector(
-      ".custom-select__options"
-    ) as HTMLElement;
+    const trigger = customSelect.querySelector('.custom-select__trigger') as HTMLElement;
+    const options = customSelect.querySelector('.custom-select__options') as HTMLElement;
     const optionItems = customSelect.querySelectorAll(
-      ".custom-select__option"
+      '.custom-select__option'
     ) as NodeListOf<HTMLElement>;
-    const flagImg = trigger?.querySelector(
-      ".custom-select__flag"
-    ) as HTMLImageElement;
+    const flagImg = trigger?.querySelector('.custom-select__flag') as HTMLImageElement;
 
     if (!trigger || !options || !flagImg) return;
 
-    trigger.addEventListener("click", (e) => {
+    trigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      customSelect.classList.toggle("active");
+      customSelect.classList.toggle('active');
 
       customSelects.forEach((otherSelect) => {
         if (otherSelect !== customSelect) {
-          otherSelect.classList.remove("active");
+          otherSelect.classList.remove('active');
         }
       });
     });
 
+    const slugMap: Record<string, string> = {
+      '/evroliga': '/en/euroleague',
+      '/en/euroleague': '/evroliga',
+      '/blog': '/en/blog',
+      '/en/blog': '/blog',
+      '/': '/en',
+      '/en': '/',
+    };
+
     optionItems.forEach((option) => {
-      option.addEventListener("click", () => {
+      option.addEventListener('click', (e) => {
+        if (option.querySelector('.custom-select__disabled')) {
+          e.stopPropagation();
+          return;
+        }
         const value = option.dataset.value;
-        const img = option.querySelector("img") as HTMLImageElement;
+        const img = option.querySelector('img') as HTMLImageElement;
 
         if (img) {
           flagImg.src = img.src;
           flagImg.alt = img.alt;
         }
 
-        customSelect.classList.remove("active");
+        customSelect.classList.remove('active');
 
-        if (value === "en") {
-          window.location.href = "/en";
+        const currentPath = window.location.pathname;
+        let targetPath = '/';
+        if (value === 'en') {
+          targetPath = slugMap[currentPath] || (currentPath === '/' ? '/en' : '/en' + currentPath);
         } else {
-          window.location.href = "/";
+          targetPath = slugMap[currentPath] || currentPath.replace(/^\/en/, '') || '/';
         }
+        window.location.href = targetPath;
       });
     });
   });
 
-  document.addEventListener("click", () => {
+  document.addEventListener('click', () => {
     customSelects.forEach((customSelect) => {
-      customSelect.classList.remove("active");
+      customSelect.classList.remove('active');
     });
   });
 }

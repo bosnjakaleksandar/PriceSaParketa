@@ -101,7 +101,8 @@ if (fixtures.length > 0) {
     {
       nextGameday && nextFixtures.length > 0 && (
         <h2 class="fixtures__title rw-36-600">
-          Sledeće kolo: {nextGameday} ({nextFixtures[0].group})
+          {Astro.props.lang === 'en' ? 'Next round' : 'Sledeće kolo'}: {nextGameday} (
+          {nextFixtures[0].group})
         </h2>
       )
     }

@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EuroleagueTable from '../../components/EuroleagueTable.astro';
+import FixturesCard from '../../components/FixturesCard.astro';
+import HeroSmall from '../../components/HeroSmall.astro';
+
+const pageData = {
+  title: 'Euroleague',
+  description:
+    'Analyzes of Euroleague, ABA League and the Eternal Derby. Listen on Spotify, YouTube and Apple Podcasts.',
+  hero: {
+    title: 'Euroleague',
+    description: 'Live standings and fixtures',
+  },
+};
+---
+
+<Layout title={pageData.title + ' - Priče sa parketa'} description={pageData.description} lang="en">
+  <main class="euroleague">
+    <HeroSmall title={pageData.title} description={pageData.hero.description} />
+    <EuroleagueTable />
+    <FixturesCard lang="en" />
+  </main>
+</Layout>

@@ -38,7 +38,7 @@ const t = translations[lang];
           <a href={lang === 'en' ? '/en' : '/'} class="header__link rw-24-500">{t.home}</a>
         </li>
         <li class="header__item">
-          <a href={lang === 'en' ? '/coming-soon' : '/evroliga'} class="header__link rw-24-500"
+          <a href={lang === 'en' ? '/en/euroleague' : '/evroliga'} class="header__link rw-24-500"
             >{t.euroleague}</a
           >
         </li>
@@ -68,12 +68,14 @@ const t = translations[lang];
             </div>
             <div class="custom-select__options">
               <div class="custom-select__option" data-value="sr">
-                <img src="/images/serbia.png" alt="serbia" />
-                <span class="rw-16-500">SRB</span>
+                <span class={lang === 'sr' ? 'rw-16-500 custom-select__disabled' : 'rw-16-500'}>
+                  <img src="/images/serbia.png" alt="serbia" /> SRB
+                </span>
               </div>
               <div class="custom-select__option" data-value="en">
-                <img src="/images/english.png" alt="english" />
-                <span class="rw-16-500">ENG</span>
+                <span class={lang === 'en' ? 'rw-16-500 custom-select__disabled' : 'rw-16-500'}>
+                  <img src="/images/english.png" alt="english" /> ENG
+                </span>
               </div>
             </div>
           </div>
@@ -92,12 +94,14 @@ const t = translations[lang];
         </div>
         <div class="custom-select__options">
           <div class="custom-select__option" data-value="sr">
-            <img src="/images/serbia.png" alt="serbia" />
-            <span class="rw-16-500">SRB</span>
+            <span class={lang === 'sr' ? 'rw-16-500 custom-select__disabled' : 'rw-16-500'}>
+              <img src="/images/serbia.png" alt="serbia" /> SRB
+            </span>
           </div>
           <div class="custom-select__option" data-value="en">
-            <img src="/images/english.png" alt="english" />
-            <span class="rw-16-500">ENG</span>
+            <span class={lang === 'en' ? 'rw-16-500 custom-select__disabled' : 'rw-16-500'}>
+              <img src="/images/english.png" alt="english" /> ENG
+            </span>
           </div>
         </div>
       </div>
