@@ -53,12 +53,25 @@ function parseFixtures(xml: string) {
 
 const fixtures = parseFixtures(xml);
 
+function normalize(str: string) {
+  return str
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, '')
+    .trim();
+}
+
 function findCrestForTeam(teamName: string) {
   if (!teamName) return '';
-  const key = teamName.toLowerCase().trim();
+  const key = normalize(teamName);
+  if (key.includes('hapoel') && key.includes('telaviv')) {
+    if (clubLogosByCode['HTA']) return clubLogosByCode['HTA'];
+  }
   if (clubLogosByName[key]) return clubLogosByName[key];
   for (const nameKey in clubLogosByName) {
-    if (nameKey.includes(key) || key.includes(nameKey)) return clubLogosByName[nameKey];
+    const normNameKey = normalize(nameKey);
+    if (normNameKey.includes(key) || key.includes(normNameKey)) {
+      return clubLogosByName[nameKey];
+    }
   }
   if (clubLogosByCode[teamName]) return clubLogosByCode[teamName];
   return '';
