@@ -46,3 +46,6 @@ temp/
 backup/
 backup-*/
 *.backup
+
+# Prettier config file
+.prettierrc

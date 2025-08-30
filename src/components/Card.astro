@@ -5,7 +5,7 @@ export interface Props {
   imageSrc: string;
   imageAlt: string;
   className: string;
-  imagePosition?: "left" | "right";
+  imagePosition?: 'left' | 'right';
   links?: Array<{
     href: string;
     imageSrc: string;
@@ -21,7 +21,7 @@ const {
   imageSrc,
   imageAlt,
   className,
-  imagePosition = "right",
+  imagePosition = 'right',
   links,
   buttonText,
   buttonHref,
@@ -31,7 +31,7 @@ const {
 <section class={`${className} card`}>
   <div class={`${className}__container card__container | js-clip`}>
     {
-      imagePosition === "left" && (
+      imagePosition === 'left' && (
         <div class={`${className}__image card__image`}>
           <img src={imageSrc} alt={imageAlt} />
         </div>
@@ -40,10 +40,7 @@ const {
 
     <div class={`${className}__content card__content`}>
       <h2 class={`${className}__title card__title rw-36-600`}>{title}</h2>
-      <p
-        class={`${className}__description card__description rw-18-400`}
-        set:html={description}
-      />
+      <p class={`${className}__description card__description rw-18-400`} set:html={description} />
 
       {
         links && (
@@ -79,7 +76,7 @@ const {
     </div>
 
     {
-      imagePosition === "right" && (
+      imagePosition === 'right' && (
         <div class={`${className}__image card__image`}>
           <img src={imageSrc} alt={imageAlt} />
         </div>

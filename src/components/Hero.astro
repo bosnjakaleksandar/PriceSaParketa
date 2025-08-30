@@ -7,13 +7,7 @@ export interface Props {
   buttonIcon?: string;
 }
 
-const {
-  title,
-  subtitle,
-  buttonText,
-  buttonHref,
-  buttonIcon = "play-circle",
-} = Astro.props;
+const { title, subtitle, buttonText, buttonHref, buttonIcon = 'play-circle' } = Astro.props;
 ---
 
 <section class="hero">

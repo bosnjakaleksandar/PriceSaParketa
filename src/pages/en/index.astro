@@ -1,34 +1,31 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import Hero from "../../components/Hero.astro";
-import Card from "../../components/Card.astro";
-import { getCollection } from "astro:content";
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Card from '../../components/Card.astro';
+import { getCollection } from 'astro:content';
 
-const pages = await getCollection("pages");
-const homePage = pages.find(
-  (page) => page.data.language === "en" && page.slug === "home-en",
-);
+const pages = await getCollection('pages');
+const homePage = pages.find((page) => page.data.language === 'en' && page.slug === 'home-en');
 
 if (!homePage) {
-  throw new Error("English homepage content not found");
+  throw new Error('English homepage content not found');
 }
 
 const { data: pageData } = homePage;
 ---
 
 <Layout
-  title={pageData.title + " - Priče sa parketa"}
+  title={pageData.title + ' - Priče sa parketa'}
   description={pageData.hero.description +
-    " - EuroLeague, ABA League and eternal derby analysis. Listen on Spotify, YouTube and Apple Podcasts."}
+    ' - EuroLeague, ABA League and eternal derby analysis. Listen on Spotify, YouTube and Apple Podcasts.'}
   lang="en"
 >
   <main class="homepage">
     <Hero
       title={pageData.hero.title}
       subtitle={pageData.hero.description}
-      buttonText={pageData.hero.buttonText || "Latest episode"}
-      buttonHref={pageData.hero.buttonLink ||
-        "https://www.youtube.com/@Pri%C4%8Desaparketa1"}
+      buttonText={pageData.hero.buttonText || 'Latest episode'}
+      buttonHref={pageData.hero.buttonLink || 'https://www.youtube.com/@Pri%C4%8Desaparketa1'}
       buttonIcon="play-circle"
     />
 
@@ -39,7 +36,7 @@ const { data: pageData } = homePage;
             className={section.className}
             title={section.title}
             description={section.description}
-            imageSrc={section.image || "/images/logo.webp"}
+            imageSrc={section.image || '/images/logo.webp'}
             imageAlt={section.title}
             imagePosition={section.imagePosition}
             links={section.links}

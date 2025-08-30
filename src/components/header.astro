@@ -1,26 +1,26 @@
 ---
 export interface Props {
-  lang?: "sr" | "en";
+  lang?: 'sr' | 'en';
 }
 
-const { lang = "sr" } = Astro.props;
+const { lang = 'sr' } = Astro.props;
 
 const translations = {
   sr: {
-    home: "Početna",
-    euroleague: "Evroliga",
-    blog: "Blog",
-    episodes: "Epizode",
-    about: "O meni",
-    contact: "Kontakt",
+    home: 'Početna',
+    euroleague: 'Evroliga',
+    blog: 'Blog',
+    episodes: 'Epizode',
+    about: 'O meni',
+    contact: 'Kontakt',
   },
   en: {
-    home: "Home",
-    euroleague: "Euroleague",
-    blog: "Blog",
-    episodes: "Episodes",
-    about: "About me",
-    contact: "Contact",
+    home: 'Home',
+    euroleague: 'Euroleague',
+    blog: 'Blog',
+    episodes: 'Episodes',
+    about: 'About me',
+    contact: 'Contact',
   },
 };
 
@@ -29,26 +29,22 @@ const t = translations[lang];
 
 <header class="header">
   <div class="header__container">
-    <a class="header__logo" href={lang === "en" ? "/en" : "/"}
+    <a class="header__logo" href={lang === 'en' ? '/en' : '/'}
       ><img src="/images/logo.webp" alt="logoPriceSaParketa" /></a
     >
     <nav class="header__nav">
       <ul class="header__list">
         <li class="header__item">
-          <a href={lang === "en" ? "/en" : "/"} class="header__link rw-24-500"
-            >{t.home}</a
+          <a href={lang === 'en' ? '/en' : '/'} class="header__link rw-24-500">{t.home}</a>
+        </li>
+        <li class="header__item">
+          <a href={lang === 'en' ? '/coming-soon' : '/evroliga'} class="header__link rw-24-500"
+            >{t.euroleague}</a
           >
         </li>
         <li class="header__item">
-          <a
-            href={lang === "en" ? "/coming-soon" : "/evroliga"}
-            class="header__link rw-24-500">{t.euroleague}</a
-          >
-        </li>
-        <li class="header__item">
-          <a
-            href={lang === "en" ? "/coming-soon" : "/blog"}
-            class="header__link rw-24-500">{t.blog}</a
+          <a href={lang === 'en' ? '/coming-soon' : '/blog'} class="header__link rw-24-500"
+            >{t.blog}</a
           >
         </li>
         <li class="header__item">
@@ -64,10 +60,8 @@ const t = translations[lang];
           <div class="custom-select">
             <div class="custom-select__trigger">
               <img
-                src={lang === "en"
-                  ? "/images/english.png"
-                  : "/images/serbia.png"}
-                alt={lang === "en" ? "english" : "serbia"}
+                src={lang === 'en' ? '/images/english.png' : '/images/serbia.png'}
+                alt={lang === 'en' ? 'english' : 'serbia'}
                 class="custom-select__flag"
               />
               <span class="custom-select__arrow">▼</span>
@@ -90,8 +84,8 @@ const t = translations[lang];
       <div class="custom-select">
         <div class="custom-select__trigger">
           <img
-            src={lang === "en" ? "/images/english.png" : "/images/serbia.png"}
-            alt={lang === "en" ? "english" : "serbia"}
+            src={lang === 'en' ? '/images/english.png' : '/images/serbia.png'}
+            alt={lang === 'en' ? 'english' : 'serbia'}
             class="custom-select__flag"
           />
           <span class="custom-select__arrow">▼</span>
@@ -108,12 +102,7 @@ const t = translations[lang];
         </div>
       </div>
     </div>
-    <div
-      class="burger"
-      role="button"
-      aria-label="Toggle navigation menu"
-      tabindex="0"
-    >
+    <div class="burger" role="button" aria-label="Toggle navigation menu" tabindex="0">
       <span></span>
       <span></span>
       <span></span>

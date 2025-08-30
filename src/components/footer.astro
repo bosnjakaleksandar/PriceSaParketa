@@ -1,30 +1,30 @@
 ---
 export interface Props {
-  lang?: "sr" | "en";
+  lang?: 'sr' | 'en';
 }
 
-const { lang = "sr" } = Astro.props;
+const { lang = 'sr' } = Astro.props;
 
 const translations = {
   sr: {
     copyright:
-      "&copy; 2025 Priče sa parketa. All rights reserved. Design and Development by @bosnjakaleksandar.",
-    contactUs: "Kontaktirajte nas",
-    home: "Početna",
-    blog: "Blog",
-    episodes: "Epizode",
-    about: "O meni",
-    contact: "Kontakt",
+      '&copy; 2025 Priče sa parketa. All rights reserved. Design and Development by @bosnjakaleksandar.',
+    contactUs: 'Kontaktirajte nas',
+    home: 'Početna',
+    blog: 'Blog',
+    episodes: 'Epizode',
+    about: 'O meni',
+    contact: 'Kontakt',
   },
   en: {
     copyright:
-      "&copy; 2025 Stories from the Court. All rights reserved. Design and Development by @bosnjakaleksandar.",
-    contactUs: "Contact us",
-    home: "Home",
-    blog: "Blog",
-    episodes: "Episodes",
-    about: "About me",
-    contact: "Contact",
+      '&copy; 2025 Stories from the Court. All rights reserved. Design and Development by @bosnjakaleksandar.',
+    contactUs: 'Contact us',
+    home: 'Home',
+    blog: 'Blog',
+    episodes: 'Episodes',
+    about: 'About me',
+    contact: 'Contact',
   },
 };
 
@@ -34,33 +34,27 @@ const t = translations[lang];
 <footer class="footer">
   <div class="footer__container">
     <div class="footer__top">
-      <a class="footer__logo" href={lang === "en" ? "/en" : "/"}
+      <a class="footer__logo" href={lang === 'en' ? '/en' : '/'}
         ><img src="/images/footerlogo.png" alt="logoPriceSaParketa" /></a
       >
       <div class="footer__list-wrapper">
         <div class="footer__info">
           <p class="footer__contact rw-32-500">{t.contactUs}</p>
-          <a
-            href="mailto:pricesaparketa@gmail.com"
-            class="footer__email rw-32-500">pricesaparketa@gmail.com</a
+          <a href="mailto:pricesaparketa@gmail.com" class="footer__email rw-32-500"
+            >pricesaparketa@gmail.com</a
           >
         </div>
         <ul class="footer__list">
           <li class="footer__item">
-            <a href={lang === "en" ? "/en" : "/"} class="footer__link rw-24-500"
-              >{t.home}</a
+            <a href={lang === 'en' ? '/en' : '/'} class="footer__link rw-24-500">{t.home}</a>
+          </li>
+          <li class="footer__item">
+            <a href={lang === 'en' ? '/en/blog' : '/blog'} class="footer__link rw-24-500"
+              >{t.blog}</a
             >
           </li>
           <li class="footer__item">
-            <a
-              href={lang === "en" ? "/en/blog" : "/blog"}
-              class="footer__link rw-24-500">{t.blog}</a
-            >
-          </li>
-          <li class="footer__item">
-            <a href="/coming-soon" class="footer__link rw-24-500"
-              >{t.episodes}</a
-            >
+            <a href="/coming-soon" class="footer__link rw-24-500">{t.episodes}</a>
           </li>
         </ul>
         <ul class="footer__list-two">
@@ -68,8 +62,7 @@ const t = translations[lang];
             <a href="/coming-soon" class="footer__link rw-24-500">{t.about}</a>
           </li>
           <li class="footer__item">
-            <a href="/coming-soon" class="footer__link rw-24-500">{t.contact}</a
-            >
+            <a href="/coming-soon" class="footer__link rw-24-500">{t.contact}</a>
           </li>
         </ul>
       </div>

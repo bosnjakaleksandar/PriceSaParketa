@@ -1,8 +1,6 @@
 ---
-const schedulesRes = await fetch(
-  "https://api-live.euroleague.net/v1/schedules?seasonCode=e2025",
-);
-const clubsRes = await fetch("https://api-live.euroleague.net/v2/clubs");
+const schedulesRes = await fetch('https://api-live.euroleague.net/v1/schedules?seasonCode=e2025');
+const clubsRes = await fetch('https://api-live.euroleague.net/v2/clubs');
 const xml = await schedulesRes.text();
 
 let clubLogosByName: Record<string, string> = {};
@@ -16,17 +14,15 @@ try {
         if (!crest) continue;
         if (club.code) clubLogosByCode[club.code] = crest;
         if (club.name) clubLogosByName[club.name.toLowerCase().trim()] = crest;
-        if (club.shortName)
-          clubLogosByName[club.shortName.toLowerCase().trim()] = crest;
-        if (club.displayName)
-          clubLogosByName[club.displayName.toLowerCase().trim()] = crest;
+        if (club.shortName) clubLogosByName[club.shortName.toLowerCase().trim()] = crest;
+        if (club.displayName) clubLogosByName[club.displayName.toLowerCase().trim()] = crest;
       }
     }
   }
 } catch (e) {}
 
 function parseFixtures(xml: string) {
-  xml = xml.replace(/\r?\n|\r/g, "").replace(/\s{2,}/g, " ");
+  xml = xml.replace(/\r?\n|\r/g, '').replace(/\s{2,}/g, ' ');
 
   const itemRegex = /<item>(.*?)<\/item>/g;
   const items = [];
@@ -36,20 +32,20 @@ function parseFixtures(xml: string) {
 
     function getTag(tag: string) {
       const tagMatch = itemXml.match(new RegExp(`<${tag}>(.*?)<\/${tag}>`));
-      return tagMatch ? tagMatch[1] : "";
+      return tagMatch ? tagMatch[1] : '';
     }
 
     items.push({
-      gameday: getTag("gameday"),
-      date: getTag("date"),
-      startime: getTag("startime"),
-      hometeam: getTag("hometeam"),
-      awayteam: getTag("awayteam"),
-      arenaname: getTag("arenaname"),
-      arenacode: getTag("arenacode"),
-      arenacapacity: getTag("arenacapacity"),
-      round: getTag("round"),
-      group: getTag("group"),
+      gameday: getTag('gameday'),
+      date: getTag('date'),
+      startime: getTag('startime'),
+      hometeam: getTag('hometeam'),
+      awayteam: getTag('awayteam'),
+      arenaname: getTag('arenaname'),
+      arenacode: getTag('arenacode'),
+      arenacapacity: getTag('arenacapacity'),
+      round: getTag('round'),
+      group: getTag('group'),
     });
   }
   return items;
@@ -58,18 +54,17 @@ function parseFixtures(xml: string) {
 const fixtures = parseFixtures(xml);
 
 function findCrestForTeam(teamName: string) {
-  if (!teamName) return "";
+  if (!teamName) return '';
   const key = teamName.toLowerCase().trim();
   if (clubLogosByName[key]) return clubLogosByName[key];
   for (const nameKey in clubLogosByName) {
-    if (nameKey.includes(key) || key.includes(nameKey))
-      return clubLogosByName[nameKey];
+    if (nameKey.includes(key) || key.includes(nameKey)) return clubLogosByName[nameKey];
   }
   if (clubLogosByCode[teamName]) return clubLogosByCode[teamName];
-  return "";
+  return '';
 }
 
-let nextGameday = "";
+let nextGameday = '';
 let nextFixtures: typeof fixtures = [];
 if (fixtures.length > 0) {
   const today = new Date();

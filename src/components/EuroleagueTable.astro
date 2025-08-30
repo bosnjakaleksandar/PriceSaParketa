@@ -3,18 +3,13 @@ let teams: any[] = [];
 let clubLogos: Record<string, string> = {};
 let fetchError = false;
 try {
-  const response = await fetch(
-    "https://api-live.euroleague.net/v1/standings?seasonCode=E2025",
-  );
+  const response = await fetch('https://api-live.euroleague.net/v1/standings?seasonCode=E2025');
   if (response.ok) {
-    const contentType = response.headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
+    const contentType = response.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
       const data = await response.json();
       teams = data?.standings || data || [];
-    } else if (
-      contentType.includes("xml") ||
-      contentType.includes("text/xml")
-    ) {
+    } else if (contentType.includes('xml') || contentType.includes('text/xml')) {
       const xmlText = await response.text();
       const teamRegex = /<team>([\s\S]*?)<\/team>/g;
       const teamsArr = [];
@@ -23,25 +18,25 @@ try {
         const teamBlock = match[1];
         const getTag = (tag: string) => {
           const res = teamBlock.match(new RegExp(`<${tag}>(.*?)<\/${tag}>`));
-          return res ? res[1] : "";
+          return res ? res[1] : '';
         };
         teamsArr.push({
-          teamName: getTag("name"),
-          wins: getTag("wins"),
-          losses: getTag("losses"),
-          pointsFor: getTag("ptsfavour"),
-          ranking: getTag("ranking"),
-          totalgames: getTag("totalgames"),
-          pointsAgainst: getTag("ptsagainst"),
-          difference: getTag("difference"),
-          code: getTag("code"),
+          teamName: getTag('name'),
+          wins: getTag('wins'),
+          losses: getTag('losses'),
+          pointsFor: getTag('ptsfavour'),
+          ranking: getTag('ranking'),
+          totalgames: getTag('totalgames'),
+          pointsAgainst: getTag('ptsagainst'),
+          difference: getTag('difference'),
+          code: getTag('code'),
         });
       }
       teams = teamsArr;
     } else {
       fetchError = true;
     }
-    const clubsRes = await fetch("https://api-live.euroleague.net/v2/clubs");
+    const clubsRes = await fetch('https://api-live.euroleague.net/v2/clubs');
     if (clubsRes.ok) {
       const clubsData = await clubsRes.json();
       if (clubsData?.data) {
@@ -64,9 +59,7 @@ try {
   <div class="table__container">
     {
       fetchError ? (
-        <p style="color: red;">
-          Greška pri preuzimanju tabele. Proveri API ili pokušaj kasnije.
-        </p>
+        <p style="color: red;">Greška pri preuzimanju tabele. Proveri API ili pokušaj kasnije.</p>
       ) : (
         <div class="table__wrapper">
           <table class="table__standings rw-24-500">
@@ -87,10 +80,10 @@ try {
                   <td
                     class={
                       idx < 6
-                        ? "table__number table__number--top6"
+                        ? 'table__number table__number--top6'
                         : idx < 10
-                          ? "table__number table__number--top10"
-                          : "table__number"
+                          ? 'table__number table__number--top10'
+                          : 'table__number'
                     }
                     data-label="Pozicija"
                   >
@@ -100,7 +93,7 @@ try {
                     {clubLogos[team.code] ? (
                       <img
                         src={clubLogos[team.code]}
-                        alt={team.teamName + " logo"}
+                        alt={team.teamName + ' logo'}
                         class="table__logo"
                       />
                     ) : null}
