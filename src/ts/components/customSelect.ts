@@ -47,7 +47,11 @@ export function initCustomSelect() {
 
         customSelect.classList.remove('active');
 
-        const currentPath = window.location.pathname;
+        let currentPath = window.location.pathname;
+        if (currentPath.length > 1 && currentPath.endsWith('/')) {
+          currentPath = currentPath.slice(0, -1);
+        }
+        currentPath = currentPath.toLowerCase();
         let targetPath = '/';
         if (value === 'en') {
           targetPath = slugMap[currentPath] || (currentPath === '/' ? '/en' : '/en' + currentPath);
