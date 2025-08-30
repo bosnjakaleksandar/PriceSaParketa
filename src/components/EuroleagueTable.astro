@@ -69,9 +69,9 @@ try {
                   <img src="/images/euroleague-logo.webp" />
                 </th>
                 <th>Tim</th>
-                <th>Pobede</th>
-                <th>Porazi</th>
-                <th>Poeni</th>
+                <th><span class="th-full">Pobede</span><span class="th-short">W</span></th>
+                <th><span class="th-full">Porazi</span><span class="th-short">L</span></th>
+                <th><span class="th-full">Poeni</span><span class="th-short">P</span></th>
               </tr>
             </thead>
             <tbody>
@@ -97,7 +97,7 @@ try {
                         class="table__logo"
                       />
                     ) : null}
-                    <span>{team.teamName}</span>
+                    <span class="team-name">{team.teamName}</span>
                   </td>
                   <td data-label="Pobede">{team.wins}</td>
                   <td data-label="Porazi">{team.losses}</td>

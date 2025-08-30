@@ -16,6 +16,10 @@
     .table__standings {
         width: 100%;
 
+        .th-short {
+            display: none;
+        }
+
         th {
             img {
                 width: 40px;
@@ -67,17 +71,27 @@
 
         .table__wrapper {
             padding: 15px 20px;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .table__standings {
-            min-width: 600px;
         }
 
         .table__standings th,
         .table__standings td {
             white-space: nowrap;
+            width: 25px;
+        }
+
+        .team-name {
+            display: none;
+        }
+
+        .table__standings {
+
+            .th-full {
+                display: none;
+            }
+
+            .th-short {
+                display: block;
+            }
         }
     }
 }
