@@ -100,3 +100,29 @@
         }
     }
 }
+
+
+// 4k responsive
+
+@media screen and (max-width: 1921px) {
+
+    .hero__content {
+        .hero__button {
+            padding: 1.04167vw 1.5625vw;
+            border-radius: 0.625vw;
+            gap: 0.52083vw;
+            box-shadow: 0 0 0.78125vw rgba($orange, 0.5);
+
+            svg {
+                width: 2.08333vw;
+                height: 2.08333vw;
+            }
+
+            &:hover {
+                svg {
+                    transform: translate(0.26042vw);
+                }
+            }
+        }
+    }
+}

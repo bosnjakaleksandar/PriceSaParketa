@@ -225,3 +225,99 @@
         }
     }
 }
+
+// 4k responsive
+
+@media screen and (max-width: 1921px) {
+    .hero-blog {
+        padding: 7.8125vw 7%;
+
+        .hero-blog__title {
+            margin-bottom: 1.04167vw;
+        }
+    }
+
+    .blog-posts {
+        .blog-posts__grid {
+            gap: 1.04167vw;
+        }
+
+        .post-card {
+            border-radius: 0.625vw;
+            box-shadow: 0 0 0.78125vw rgba($orange, 0.5);
+        }
+
+        .post-image {
+            border-radius: 0.625vw 0.625vw 0 0;
+
+            img {
+                max-height: 15.625vw;
+                border-radius: 0.625vw 0.625vw 0 0;
+            }
+        }
+
+        .post-content {
+            padding: 1.04167vw 1.5625vw;
+
+            .post-tags {
+                gap: 0.52083vw;
+                margin: 0.78125vw 0;
+
+                .tag {
+                    padding: 0.36458vw 0.52083vw;
+                    border-radius: 0.52083vw;
+                    font-size: 0.72917vw;
+                }
+            }
+        }
+
+        .post-title {
+            margin-bottom: 0.26042vw;
+        }
+    }
+
+    .blog-post {
+        .blog-post__container {
+            margin: 13.02083vw 10%;
+        }
+
+        .post-content {
+            h2 {
+                margin-bottom: 1.04167vw;
+            }
+
+            h3,
+            h4,
+            h5,
+            h6 {
+                margin-bottom: 0.52083vw;
+            }
+
+            margin-bottom: 2.08333vw;
+        }
+
+        .post-tags {
+            gap: 0.52083vw;
+            margin: 0.78125vw 0;
+
+            .tag {
+                padding: 0.36458vw 0.52083vw;
+                border-radius: 0.52083vw;
+                font-size: 0.72917vw;
+            }
+        }
+
+        .back-link {
+            box-shadow: 0 0 0.78125vw rgba($orange, 0.5);
+            padding: 0.52083vw 1.04167vw;
+            border-radius: 0.625vw;
+            gap: 0.52083vw;
+
+            &:hover {
+                svg {
+                    transform: translateX(-0.41667vw) rotate(180deg);
+                }
+            }
+        }
+    }
+}

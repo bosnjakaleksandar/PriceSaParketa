@@ -38,3 +38,24 @@
         }
     }
 }
+
+// 4k responsive
+
+@media screen and (max-width: 1921px) {
+    .coming-soon {
+        .coming-soon__container {
+            border-radius: 0.625vw;
+            padding: 2.60417vw 1.04167vw;
+        }
+
+        .coming-soon__text {
+            margin-top: 1.04167vw;
+            margin-bottom: 2.08333vw;
+        }
+
+        .coming-soon__link {
+            padding: 0.52083vw 1.04167vw;
+            border-radius: 0.41667vw;
+        }
+    }
+}

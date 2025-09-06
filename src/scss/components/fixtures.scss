@@ -53,3 +53,32 @@
         }
     }
 }
+
+// 4k responsive
+
+@media screen and (max-width: 1921px) {
+    .fixtures {
+        .fixtures__title {
+            margin-bottom: 1.5625vw;
+        }
+
+        .fixture {
+            max-width: 22.39583vw;
+            height: 8.85417vw;
+            padding: 1.04167vw 0.52083vw;
+            border-radius: 0.625vw;
+        }
+
+        .fixture__teams {
+            gap: 1.04167vw;
+        }
+
+        .fixture__team {
+            img {
+                width: 4.0625vw;
+                height: 4.0625vw;
+                margin-bottom: 0.41667vw;
+            }
+        }
+    }
+}
