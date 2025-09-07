@@ -98,7 +98,7 @@
 
 // 4k responsive
 
-@media screen and (max-width: 1921px) {
+@media screen and (min-width: 1921px) {
     .table {
         .table__wrapper {
             box-shadow: 0 0 1.5625vw rgba($orange, 0.5);
