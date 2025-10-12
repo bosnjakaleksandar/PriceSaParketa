@@ -179,6 +179,14 @@
     }
 }
 
+@media (max-width: 992px) {
+    .header {
+        .header__list {
+            gap: 20px;
+        }
+    }
+}
+
 @media (max-width: 768px) {
     .header {
         padding-top: 5px;
