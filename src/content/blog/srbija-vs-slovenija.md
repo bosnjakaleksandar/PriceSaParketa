@@ -8,7 +8,6 @@ tags:
   - slovenija
   - euro
   - eurobasket
-  - kss
 ---
 ## Srpska dominacija pred EuroBasket
 
