@@ -6,19 +6,38 @@ export interface Props {
   title: string;
   description?: string;
   lang?: 'sr' | 'en';
+  canonicalURL?: string;
 }
 
 const {
   title,
   description = 'Najpopularniji košarkaški podcast u Srbiji i regionu',
   lang = 'sr',
+  canonicalURL,
 } = Astro.props;
+
+const baseURL = 'https://pricesaparketa.netlify.app';
+const currentCanonicalURL = canonicalURL || new URL(Astro.url.pathname, baseURL).href;
+
+const currentPath = Astro.url.pathname;
+const srURL = currentPath.startsWith('/en/')
+  ? new URL(currentPath.replace('/en/', '/'), baseURL).href
+  : new URL(currentPath, baseURL).href;
+
+const hasEnglishVersion =
+  currentPath === '/' || currentPath === '/evroliga' || currentPath.startsWith('/en/');
+const enURL = currentPath.startsWith('/en/')
+  ? new URL(currentPath, baseURL).href
+  : hasEnglishVersion && currentPath === '/'
+    ? new URL('/en/', baseURL).href
+    : hasEnglishVersion && currentPath === '/evroliga'
+      ? new URL('/en/euroleague', baseURL).href
+      : null;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FYY5MK66MW"></script>
     <script is:inline>
@@ -60,11 +79,13 @@ const {
     <meta name="msapplication-TileImage" content="/favicons/ms-icon-144x144.png" />
     <meta name="theme-color" content="#0b0b0b" />
 
-    <link rel="canonical" href="https://pricesaparketa.netlify.app" />
-    <link rel="alternate" hreflang="sr" href="https://pricesaparketa.netlify.app" />
-    <link rel="alternate" hreflang="en" href="https://pricesaparketa.netlify.app/en" />
+    <!-- SEO Tags -->
+    <link rel="canonical" href={currentCanonicalURL} />
+    <link rel="alternate" hreflang="sr" href={srURL} />
+    {enURL && <link rel="alternate" hreflang="en" href={enURL} />}
+    <link rel="alternate" hreflang="x-default" href={srURL} />
 
-    <meta property="og:url" content="https://pricesaparketa.netlify.app" />
+    <meta property="og:url" content={currentCanonicalURL} />
     <meta property="og:image" content="https://pricesaparketa.netlify.app/images/heroBanner.webp" />
     <meta property="og:image:type" content="image/webp" />
     <meta property="og:image:width" content="1920" />
