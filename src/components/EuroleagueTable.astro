@@ -2,6 +2,42 @@
 let teams: any[] = [];
 let clubLogos: Record<string, string> = {};
 let fetchError = false;
+let nextGameday = '';
+let nextGroup = '';
+
+try {
+  const schedulesRes = await fetch('https://api-live.euroleague.net/v1/schedules?seasonCode=e2025');
+  const xml = await schedulesRes.text();
+  
+  const itemRegex = /<item>(.*?)<\/item>/g;
+  const fixtures = [];
+  let match;
+  while ((match = itemRegex.exec(xml)) !== null) {
+    const itemXml = match[1];
+    const getTag = (tag: string) => {
+      const tagMatch = itemXml.match(new RegExp(`<${tag}>(.*?)<\/${tag}>`));
+      return tagMatch ? tagMatch[1] : '';
+    };
+    fixtures.push({
+      gameday: getTag('gameday'),
+      date: getTag('date'),
+      group: getTag('group'),
+    });
+  }
+  
+  if (fixtures.length > 0) {
+    const today = new Date();
+    for (const fixture of fixtures) {
+      const fixtureDate = new Date(fixture.date);
+      if (fixtureDate >= today) {
+        nextGameday = fixture.gameday;
+        nextGroup = fixture.group;
+        break;
+      }
+    }
+  }
+} catch (e) {}
+
 try {
   const response = await fetch('https://api-live.euroleague.net/v1/standings?seasonCode=E2025');
   if (response.ok) {
@@ -57,6 +93,12 @@ try {
 
 <section class="table">
   <div class="table__container">
+    <h2 class="table__title rw-36-600">
+      {Astro.props.lang === 'en' 
+        ? (nextGameday ? `Standings after Round ${nextGameday}` : 'Euroleague Standings')
+        : (nextGameday ? `Stanje na tabeli posle ${nextGameday} kola` : 'Tabela Evrolige')
+      }
+    </h2>
     {
       fetchError ? (
         <p style="color: red;">Greška pri preuzimanju tabele. Proveri API ili pokušaj kasnije.</p>
@@ -66,12 +108,12 @@ try {
             <thead>
               <tr>
                 <th>
-                  <img src="/images/euroleague-logo.webp" />
+                  <img src="/images/euroleague-logo.webp" alt="Euroleague logo" />
                 </th>
-                <th>Tim</th>
-                <th><span class="th-full">Pobede</span><span class="th-short">W</span></th>
-                <th><span class="th-full">Porazi</span><span class="th-short">L</span></th>
-                <th><span class="th-full">Poeni</span><span class="th-short">P</span></th>
+                <th>{Astro.props.lang === 'en' ? 'Team' : 'Tim'}</th>
+                <th><span class="th-full">{Astro.props.lang === 'en' ? 'Wins' : 'Pobede'}</span><span class="th-short">W</span></th>
+                <th><span class="th-full">{Astro.props.lang === 'en' ? 'Losses' : 'Porazi'}</span><span class="th-short">L</span></th>
+                <th><span class="th-full">{Astro.props.lang === 'en' ? 'Diff' : 'Razlika'}</span><span class="th-short">{Astro.props.lang === 'en' ? 'D' : 'R'}</span></th>
               </tr>
             </thead>
             <tbody>
@@ -85,11 +127,11 @@ try {
                           ? 'table__number table__number--top10'
                           : 'table__number'
                     }
-                    data-label="Pozicija"
+                    data-label={Astro.props.lang === 'en' ? 'Position' : 'Pozicija'}
                   >
                     {idx + 1}
                   </td>
-                  <td data-label="Tim">
+                  <td data-label={Astro.props.lang === 'en' ? 'Team' : 'Tim'}>
                     {clubLogos[team.code] ? (
                       <img
                         src={clubLogos[team.code]}
@@ -99,9 +141,11 @@ try {
                     ) : null}
                     <span class="team-name">{team.teamName}</span>
                   </td>
-                  <td data-label="Pobede">{team.wins}</td>
-                  <td data-label="Porazi">{team.losses}</td>
-                  <td data-label="Poeni">{team.pointsFor}</td>
+                  <td data-label={Astro.props.lang === 'en' ? 'Wins' : 'Pobede'}>{team.wins}</td>
+                  <td data-label={Astro.props.lang === 'en' ? 'Losses' : 'Porazi'}>{team.losses}</td>
+                  <td data-label={Astro.props.lang === 'en' ? 'Diff' : 'Razlika'}>
+                    {team.difference > 0 ? `+${team.difference}` : team.difference}
+                  </td>
                 </tr>
               ))}
             </tbody>

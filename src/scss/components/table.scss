@@ -5,6 +5,12 @@
         margin: 5% 10%;
     }
 
+    .table__title {
+        text-align: center;
+        color: $white;
+        margin-bottom: 5%;
+    }
+
     .table__wrapper {
         background-color: $orange;
         box-shadow: 0 0 30px rgba($orange, 0.5);
@@ -22,8 +28,8 @@
 
         th {
             img {
-                width: 40px;
-                height: 40px;
+                max-width: 40px;
+                max-height: 40px;
             }
 
             padding-bottom: 10px;
@@ -39,8 +45,8 @@
         }
 
         .table__logo {
-            width: 40px;
-            height: 40px;
+            max-width: 40px;
+            max-height: 40px;
             margin-right: 10px;
         }
 
