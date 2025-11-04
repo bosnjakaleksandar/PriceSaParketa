@@ -7,7 +7,6 @@ tags:
   - partizan
   - dubai
   - euroleague
-  - košarka
 ---
 ## Prva četvrtina
 
