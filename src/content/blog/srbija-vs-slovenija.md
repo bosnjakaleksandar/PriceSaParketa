@@ -1,5 +1,5 @@
 ---
-title: Srbija Vs Slovenija
+title: Pobeda Srbije u poslednjoj proveri pred EuroBasket
 date: 2025-08-22T15:00:00.000+02:00
 description: Srbija je deklasirala Sloveniju sa 106–72. Utakmica je odigrana 21.
   avgusta 2025. Kao pripremni susret pred EuroBasket 2025
