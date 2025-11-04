@@ -4,7 +4,7 @@ language: sr
 date: 2025-08-22T15:00:00.000+02:00
 description: Srbija je deklasirala Sloveniju sa 106–72. Utakmica je odigrana 21.
   avgusta 2025. Kao pripremni susret pred EuroBasket 2025
-relatedSlug: serbia's-victory-in-the-final-test-before-eurobasket
+relatedSlug: serbias-victory-in-the-final-test-before-eurobasket
 tags:
   - srbija
   - slovenija
