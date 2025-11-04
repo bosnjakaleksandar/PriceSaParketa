@@ -12,13 +12,15 @@ collections:
     label: 'Blog Posts'
     folder: 'src/content/blog'
     create: true
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
+    identifier_field: slug
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
       - {
           label: 'Slug',
           name: 'slug',
           widget: 'string',
+          required: false,
           hint: 'URL slug (npr. moj-blog-post). Ako ostaviš prazno, generisaće se automatski iz naslova.',
         }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
@@ -30,13 +32,15 @@ collections:
     label: 'Pages / Stranice'
     folder: 'src/content/pages'
     create: true
-    slug: '{{slug}}'
+    slug: '{{fields.slug}}'
+    identifier_field: slug
     fields:
       - { label: 'Title', name: 'title', widget: 'string', hint: 'Naslov stranice' }
       - {
           label: 'Slug',
           name: 'slug',
           widget: 'string',
+          required: false,
           hint: 'URL slug (npr. home, about). Ako ostaviš prazno, generisaće se automatski iz naslova.',
         }
       - {
