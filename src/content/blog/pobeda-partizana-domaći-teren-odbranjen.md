@@ -3,7 +3,10 @@ title: Pobeda Partizana, domaći teren odbranjen!
 date: 2025-10-11T16:52:00.000+02:00
 description: Partizan definitivno nije razočarao svoje navijače, fantastična
   utakmica izabranika Željka Obradovića!
-tags: []
+tags:
+  - partizan
+  - efes
+  - euroleague
 ---
 ## Partizan-Efes
 
