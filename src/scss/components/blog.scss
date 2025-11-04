@@ -113,6 +113,14 @@
             overflow: hidden;
             text-overflow: ellipsis;
             min-height: 90px;
+
+            @include mq (1024) {
+                min-height: 70px;
+            }
+
+            @include mq (678) {
+                min-height: 50px;
+            }
         }
 
         .post-description {
