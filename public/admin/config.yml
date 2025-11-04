@@ -3,138 +3,135 @@ backend:
   branch: main
 
 # Media files will be stored in the repo under public/images/uploads
-media_folder: "public/images/uploads"
-public_folder: "/images/uploads"
+media_folder: 'public/images/uploads'
+public_folder: '/images/uploads'
 
 # Collections define the structure for the different content types
 collections:
-  - name: "blog"
-    label: "Blog Posts"
-    folder: "src/content/blog"
+  - name: 'blog'
+    label: 'Blog Posts'
+    folder: 'src/content/blog'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - {
+          label: 'Slug',
+          name: 'slug',
+          widget: 'string',
+          hint: 'URL slug (npr. moj-blog-post). Ako ostaviš prazno, generisaće se automatski iz naslova.',
+        }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Tags', name: 'tags', widget: 'list', default: ['post'] }
 
-  - name: "pages"
-    label: "Pages / Stranice"
-    folder: "src/content/pages"
+  - name: 'pages'
+    label: 'Pages / Stranice'
+    folder: 'src/content/pages'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
     fields:
+      - { label: 'Title', name: 'title', widget: 'string', hint: 'Naslov stranice' }
       - {
-          label: "Title",
-          name: "title",
-          widget: "string",
-          hint: "Naslov stranice",
+          label: 'Slug',
+          name: 'slug',
+          widget: 'string',
+          hint: 'URL slug (npr. home, about). Ako ostaviš prazno, generisaće se automatski iz naslova.',
         }
       - {
-          label: "Language",
-          name: "language",
-          widget: "select",
-          options: ["sr", "en"],
-          hint: "Jezik stranice",
+          label: 'Language',
+          name: 'language',
+          widget: 'select',
+          options: ['sr', 'en'],
+          hint: 'Jezik stranice',
         }
-      - label: "Hero Section"
-        name: "hero"
-        widget: "object"
-        hint: "Hero sekcija na vrhu stranice"
+      - label: 'Hero Section'
+        name: 'hero'
+        widget: 'object'
+        hint: 'Hero sekcija na vrhu stranice'
         fields:
           - {
-              label: "Hero Title",
-              name: "title",
-              widget: "string",
-              hint: "Veliki naslov na vrhu stranice",
+              label: 'Hero Title',
+              name: 'title',
+              widget: 'string',
+              hint: 'Veliki naslov na vrhu stranice',
             }
           - {
-              label: "Hero Description",
-              name: "description",
-              widget: "text",
-              hint: "Opis ispod hero naslova",
+              label: 'Hero Description',
+              name: 'description',
+              widget: 'text',
+              hint: 'Opis ispod hero naslova',
             }
           - {
-              label: "Button Text",
-              name: "buttonText",
-              widget: "string",
+              label: 'Button Text',
+              name: 'buttonText',
+              widget: 'string',
               required: false,
-              hint: "Tekst na dugmetu",
+              hint: 'Tekst na dugmetu',
             }
           - {
-              label: "Button Link",
-              name: "buttonLink",
-              widget: "string",
+              label: 'Button Link',
+              name: 'buttonLink',
+              widget: 'string',
               required: false,
-              hint: "Link za dugme",
+              hint: 'Link za dugme',
             }
-      - label: "Sections"
-        name: "sections"
-        widget: "list"
+      - label: 'Sections'
+        name: 'sections'
+        widget: 'list'
         required: false
-        hint: "Sekcije na stranici (Card komponente)"
+        hint: 'Sekcije na stranici (Card komponente)'
         fields:
           - {
-              label: "CSS Class Name",
-              name: "className",
-              widget: "string",
-              hint: "CSS klasa za sekciju (npr. about, euroleague, abaleague, derby)",
+              label: 'CSS Class Name',
+              name: 'className',
+              widget: 'string',
+              hint: 'CSS klasa za sekciju (npr. about, euroleague, abaleague, derby)',
+            }
+          - { label: 'Section Title', name: 'title', widget: 'string', hint: 'Naslov sekcije' }
+          - {
+              label: 'Section Description',
+              name: 'description',
+              widget: 'markdown',
+              hint: 'Opis sekcije',
             }
           - {
-              label: "Section Title",
-              name: "title",
-              widget: "string",
-              hint: "Naslov sekcije",
-            }
-          - {
-              label: "Section Description",
-              name: "description",
-              widget: "markdown",
-              hint: "Opis sekcije",
-            }
-          - {
-              label: "Section Image",
-              name: "image",
-              widget: "image",
+              label: 'Section Image',
+              name: 'image',
+              widget: 'image',
               required: false,
-              hint: "Slika za sekciju",
+              hint: 'Slika za sekciju',
             }
           - {
-              label: "Image Position",
-              name: "imagePosition",
-              widget: "select",
-              options: ["left", "right"],
-              default: "right",
-              hint: "Pozicija slike (levo ili desno)",
+              label: 'Image Position',
+              name: 'imagePosition',
+              widget: 'select',
+              options: ['left', 'right'],
+              default: 'right',
+              hint: 'Pozicija slike (levo ili desno)',
             }
-          - label: "Links"
-            name: "links"
-            widget: "list"
+          - label: 'Links'
+            name: 'links'
+            widget: 'list'
             required: false
-            hint: "Linkovi za sekciju (npr. Spotify, YouTube, Apple Podcasts)"
+            hint: 'Linkovi za sekciju (npr. Spotify, YouTube, Apple Podcasts)'
             fields:
-              - { label: "Link URL", name: "href", widget: "string" }
-              - { label: "Link Image", name: "imageSrc", widget: "image" }
-              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: 'Link URL', name: 'href', widget: 'string' }
+              - { label: 'Link Image', name: 'imageSrc', widget: 'image' }
+              - { label: 'Alt Text', name: 'alt', widget: 'string' }
           - {
-              label: "Button Text",
-              name: "buttonText",
-              widget: "string",
+              label: 'Button Text',
+              name: 'buttonText',
+              widget: 'string',
               required: false,
-              hint: "Tekst na dugmetu sekcije",
+              hint: 'Tekst na dugmetu sekcije',
             }
           - {
-              label: "Button Link",
-              name: "buttonLink",
-              widget: "string",
+              label: 'Button Link',
+              name: 'buttonLink',
+              widget: 'string',
               required: false,
-              hint: "Link za dugme sekcije",
+              hint: 'Link za dugme sekcije',
             }
-      - {
-          label: "Page Content",
-          name: "body",
-          widget: "markdown",
-          hint: "Glavni sadržaj stranice",
-        }
+      - { label: 'Page Content', name: 'body', widget: 'markdown', hint: 'Glavni sadržaj stranice' }
