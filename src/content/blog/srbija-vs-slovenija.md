@@ -7,7 +7,6 @@ tags:
   - košarka
   - euro
   - eurobasket
-  - sport
   - srbija
   - slovenija
   - kss
@@ -18,13 +17,9 @@ tags:
 
 Srbija je u poslednjoj proveri pred EuroBasket pokazala da je glavni kandidat za titulu. Ubedljivim trijumfom nad Slovenijom (106–72), reprezentacija je poslala jasan signal čitavoj Evropi.
 
-<br>
-
 ## Pregled igre
 
 Od početka do kraja Srbija je kontrolisala tempo, dok je Slovenija tek u tih desetak minuta Dončićeve prvog kvartala izgledala opasno. Kako je šuterski ritam padao, tako je i zaostatak rastao,  i na kraju je Dončić prešao na klupu, dok se Srbija veselila u punom sastavu.
-
-<br>
 
 ## Individualni učinak
 
@@ -33,8 +28,6 @@ Od početka do kraja Srbija je kontrolisala tempo, dok je Slovenija tek u tih de
 * Nikola Jović: 18 poena i 7 skokova.
 * Bogdan Bogdanović: 14 poena uz impresivnih 4/5 za tri poena
 * Nikola Jokić: 10 poena, 8 skokova i 4 asistencije
-
-<br>
 
 ### Slovenija:
 

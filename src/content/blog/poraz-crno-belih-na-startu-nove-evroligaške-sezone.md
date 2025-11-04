@@ -13,25 +13,17 @@ tags:
 
 Usporen početak, propraćen napadačkom rapsodijom Bertansa koji je postigao 12 poena već u prvoj četvrtini, sa druge strane nova pojačanja Partizana, Osetkovski i Parker, uspevali su u par navrata da uzvrate nalet ekipe Dubaija, međutim to nije bilo dovoljno i prva četvrtina završava rezultatom 28:18 u korist domaćina.
 
-<br>
-
 ## Druga četvrtina
 
 Skoro celu drugu četvrtinu, izabranici Jurice Golemca uspevali su da održe prednost iz prve četvrtine, ipak na samom kraju mini serijom Osetkovskog Partizan uspeva da uhvati rezultatski priključak, i na poluvreme odlazi sa nadom o mogućem preokretu u drugom poluvremenu, rezultat na kraju druge četvrtine bio je 47:40.
-
-<br>
 
 ## Treća četvrtina
 
 Na trenutak, delovalo je da ekipa Željka Obradovića može do potpunog preokreta i prelazi u vođstvo pri rezultatu 47:48. Ipak to biva početak ofanzivnog posta crno-belih i dominacije Kabengelea u reketu. Rezultat na kraju treće četvrtine bio je 68:56, ipak nada je i dalje postojala.
 
-<br>
-
 ## Četvrta četvrtina
 
 Nastavio je Bertans dominaciju sa početka meča, prosto danas je bio neumoljiv prema bivšem klubu, a onda se dodao i Filip Petrušev sa par lakih poena, što je bilo dovoljno da ekipa Dubaija ode na čak 22 poena razlike na 5:48  do kraja meča. Ulazak u igru Pokuševskog doneo je svima tračak nade da je preokret moguć, ubacivši dve brze trojke, Poku je na trenutak zagolicao maštu navijačima o mogućem preokretu, ipak zaostatk je bio previše velik, te je Partizan na samom kraju uspeo da ublaži poraz, izgubivši ovaj meč rezultatom 89:76.
-
-<br>
 
 ## Zaključak
 

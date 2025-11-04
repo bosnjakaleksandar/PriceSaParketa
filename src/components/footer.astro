@@ -12,9 +12,10 @@ const translations = {
     contactUs: 'Kontaktirajte nas',
     home: 'Početna',
     blog: 'Blog',
-    episodes: 'Epizode',
-    about: 'O meni',
-    contact: 'Kontakt',
+    euroleague: 'Evroliga',
+    // episodes: 'Epizode',
+    // about: 'O meni',
+    // contact: 'Kontakt',
   },
   en: {
     copyright:
@@ -22,9 +23,10 @@ const translations = {
     contactUs: 'Contact us',
     home: 'Home',
     blog: 'Blog',
-    episodes: 'Episodes',
-    about: 'About me',
-    contact: 'Contact',
+    euroleague: 'Euroleague',
+    // episodes: 'Episodes',
+    // about: 'About me',
+    // contact: 'Contact',
   },
 };
 
@@ -54,17 +56,22 @@ const t = translations[lang];
             >
           </li>
           <li class="footer__item">
-            <a href="/coming-soon" class="footer__link rw-24-500">{t.episodes}</a>
+            <a href={lang === 'en' ? '/en/euroleague' : '/evroliga'} class="footer__link rw-24-500"
+              >{t.euroleague}</a
+            >
           </li>
+          <!-- <li class="footer__item">
+            <a href="/coming-soon" class="footer__link rw-24-500">{t.episodes}</a>
+          </li> -->
         </ul>
-        <ul class="footer__list-two">
+        <!-- <ul class="footer__list-two">
           <li class="footer__item">
             <a href="/coming-soon" class="footer__link rw-24-500">{t.about}</a>
           </li>
           <li class="footer__item">
             <a href="/coming-soon" class="footer__link rw-24-500">{t.contact}</a>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
     <hr class="footer__divider" />
