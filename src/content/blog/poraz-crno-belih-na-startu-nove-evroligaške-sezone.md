@@ -1,5 +1,6 @@
 ---
 title: Poraz crno-belih na startu nove evroligaške sezone!
+slug: poraz-crno-belih-na-startu-nove-evroligaske-sezone
 date: 2025-09-30T20:39:00.000+02:00
 description: Očekivao se gust meč protiv debitanta, ekipe Dubaija, ali ovakva
   dominacija u ofanzivi je bila nepremostiva prepreka za Partizan
