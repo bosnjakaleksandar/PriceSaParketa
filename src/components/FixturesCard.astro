@@ -1,4 +1,10 @@
 ---
+export interface Props {
+  lang: 'sr' | 'en';
+}
+
+const { lang } = Astro.props;
+
 const schedulesRes = await fetch('https://api-live.euroleague.net/v1/schedules?seasonCode=e2025');
 const clubsRes = await fetch('https://api-live.euroleague.net/v2/clubs');
 const xml = await schedulesRes.text();
@@ -100,8 +106,7 @@ if (fixtures.length > 0) {
     {
       nextGameday && nextFixtures.length > 0 && (
         <h2 class="fixtures__title rw-36-600">
-          {Astro.props.lang === 'en' ? 'Next round' : 'Sledeće kolo'}: {nextGameday} (
-          {nextFixtures[0].group})
+          {lang === 'en' ? 'Next round' : 'Sledeće kolo'}: {nextGameday} ({nextFixtures[0].group})
         </h2>
       )
     }
@@ -134,9 +139,7 @@ if (fixtures.length > 0) {
                 <div class="rw-16-600">
                   {fixture.date} {fixture.startime}
                 </div>
-                <div class="rw-16-500">
-                  {fixture.arenaname}
-                </div>
+                <div class="rw-16-500">{fixture.arenaname}</div>
               </div>
             </div>
           ))

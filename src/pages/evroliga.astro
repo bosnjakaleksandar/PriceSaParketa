@@ -1,23 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import EuroleagueTable from '../components/EuroleagueTable.astro';
 import FixturesCard from '../components/FixturesCard.astro';
 import HeroSmall from '../components/HeroSmall.astro';
 
-const pageData = {
-  title: 'Evroliga',
-  description:
-    'Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts.',
-  hero: {
-    title: 'Evroliga',
-    description: 'Pregled tabele i rasporeda utakmica',
-  },
-};
+const pages = await getCollection('pages');
+const pageData = pages.find((page) => page.data.language === 'sr' && page.slug === 'evroliga');
+
+const title = pageData?.data.title || 'Evroliga';
+const description = pageData?.data.hero.description || 'Pregled tabele i rasporeda utakmica';
 ---
 
-<Layout title={pageData.title + ' - Priče sa parketa'} description={pageData.description} lang="sr">
+<Layout title={title + ' - Priče sa parketa'} description={description} lang="sr">
   <main class="euroleague">
-    <HeroSmall title={pageData.title} description={pageData.hero.description} />
+    <HeroSmall title={title} description={description} />
     <EuroleagueTable lang="sr" />
     <FixturesCard lang="sr" />
   </main>

@@ -57,11 +57,27 @@ export function initCustomSelect() {
           currentPath = currentPath.slice(0, -1);
         }
         currentPath = currentPath.toLowerCase();
+
+        // Check for related slug in meta tag (for blog posts)
+        const relatedSlugMeta = document.querySelector('meta[name="related-slug"]');
+        const relatedSlug = relatedSlugMeta?.getAttribute('content');
+
         let targetPath = '/';
         if (value === 'en') {
-          targetPath = slugMap[currentPath] || (currentPath === '/' ? '/en' : '/en' + currentPath);
+          // Going to English
+          if (relatedSlug && currentPath.startsWith('/blog/')) {
+            targetPath = `/en/blog/${relatedSlug}`;
+          } else {
+            targetPath =
+              slugMap[currentPath] || (currentPath === '/' ? '/en' : '/en' + currentPath);
+          }
         } else {
-          targetPath = slugMap[currentPath] || currentPath.replace(/^\/en/, '') || '/';
+          // Going to Serbian
+          if (relatedSlug && currentPath.startsWith('/en/blog/')) {
+            targetPath = `/blog/${relatedSlug}`;
+          } else {
+            targetPath = slugMap[currentPath] || currentPath.replace(/^\/en/, '') || '/';
+          }
         }
         window.location.href = targetPath;
       });

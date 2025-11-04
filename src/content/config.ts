@@ -9,6 +9,7 @@ const blog = defineCollection({
     date: z.date(),
     image: z.string().optional(),
     tags: z.array(z.string()).default(['post']),
+    relatedSlug: z.string().optional(),
   }),
 });
 
@@ -21,6 +22,7 @@ const blogEn = defineCollection({
     date: z.date(),
     image: z.string().optional(),
     tags: z.array(z.string()).default(['post']),
+    relatedSlug: z.string().optional(),
   }),
 });
 
@@ -32,7 +34,6 @@ const pages = defineCollection({
     hero: z.object({
       title: z.string(),
       description: z.string().optional(),
-      subtitle: z.string().optional(),
       buttonText: z.string().optional(),
       buttonLink: z.string().optional(),
     }),

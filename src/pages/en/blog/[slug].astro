@@ -18,7 +18,12 @@ const { post } = Astro.props;
 const { Content } = await post.render();
 ---
 
-<Layout title={`${post.data.title} - Stories from the Court`} lang="en">
+<Layout title={`${post.data.title} - Priče sa parketa`} lang="en">
+  {
+    post.data.relatedSlug && (
+      <meta slot="head" name="related-slug" content={post.data.relatedSlug} />
+    )
+  }
   <main class="homepage">
     <article class="blog-post">
       <div class="blog-post__container">

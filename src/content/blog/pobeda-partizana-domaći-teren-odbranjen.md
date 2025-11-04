@@ -4,6 +4,7 @@ language: sr
 date: 2025-10-11T16:52:00.000+02:00
 description: Partizan definitivno nije razočarao svoje navijače, fantastična
   utakmica izabranika Željka Obradovića!
+relatedSlug: partizan's-victory-home-court-defended
 tags:
   - partizan
   - efes

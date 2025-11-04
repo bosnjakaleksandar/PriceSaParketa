@@ -1,4 +1,10 @@
 ---
+export interface Props {
+  lang: 'sr' | 'en';
+}
+
+const { lang } = Astro.props;
+
 let teams: any[] = [];
 let clubLogos: Record<string, string> = {};
 let fetchError = false;
@@ -8,7 +14,7 @@ let nextGroup = '';
 try {
   const schedulesRes = await fetch('https://api-live.euroleague.net/v1/schedules?seasonCode=e2025');
   const xml = await schedulesRes.text();
-  
+
   const itemRegex = /<item>(.*?)<\/item>/g;
   const fixtures = [];
   let match;
@@ -24,7 +30,7 @@ try {
       group: getTag('group'),
     });
   }
-  
+
   if (fixtures.length > 0) {
     const today = new Date();
     for (const fixture of fixtures) {
@@ -94,9 +100,14 @@ try {
 <section class="table">
   <div class="table__container">
     <h2 class="table__title rw-36-600">
-      {Astro.props.lang === 'en' 
-        ? (nextGameday ? `Standings after Round ${nextGameday}` : 'Euroleague Standings')
-        : (nextGameday ? `Stanje na tabeli posle ${nextGameday} kola` : 'Tabela Evrolige')
+      {
+        lang === 'en'
+          ? nextGameday
+            ? `Standings after Round ${nextGameday}`
+            : 'Euroleague Standings'
+          : nextGameday
+            ? `Stanje na tabeli posle ${nextGameday} kola`
+            : 'Tabela Evrolige'
       }
     </h2>
     {
@@ -110,10 +121,25 @@ try {
                 <th>
                   <img src="/images/euroleague-logo.webp" alt="Euroleague logo" />
                 </th>
-                <th>{Astro.props.lang === 'en' ? 'Team' : 'Tim'}</th>
-                <th><span class="th-full">{Astro.props.lang === 'en' ? 'Wins' : 'Pobede'}</span><span class="th-short">W</span></th>
-                <th><span class="th-full">{Astro.props.lang === 'en' ? 'Losses' : 'Porazi'}</span><span class="th-short">L</span></th>
-                <th><span class="th-full">{Astro.props.lang === 'en' ? 'Diff' : 'Razlika'}</span><span class="th-short">{Astro.props.lang === 'en' ? 'D' : 'R'}</span></th>
+                <th>{lang === 'en' ? 'Team' : 'Tim'}</th>
+                <th>
+                  <>
+                    <span class="th-full">{lang === 'en' ? 'Wins' : 'Pobede'}</span>
+                    <span class="th-short">W</span>
+                  </>
+                </th>
+                <th>
+                  <>
+                    <span class="th-full">{lang === 'en' ? 'Losses' : 'Porazi'}</span>
+                    <span class="th-short">L</span>
+                  </>
+                </th>
+                <th>
+                  <>
+                    <span class="th-full">{lang === 'en' ? 'Diff' : 'Razlika'}</span>
+                    <span class="th-short">{lang === 'en' ? 'D' : 'R'}</span>
+                  </>
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -142,7 +168,9 @@ try {
                     <span class="team-name">{team.teamName}</span>
                   </td>
                   <td data-label={Astro.props.lang === 'en' ? 'Wins' : 'Pobede'}>{team.wins}</td>
-                  <td data-label={Astro.props.lang === 'en' ? 'Losses' : 'Porazi'}>{team.losses}</td>
+                  <td data-label={Astro.props.lang === 'en' ? 'Losses' : 'Porazi'}>
+                    {team.losses}
+                  </td>
                   <td data-label={Astro.props.lang === 'en' ? 'Diff' : 'Razlika'}>
                     {team.difference > 0 ? `+${team.difference}` : team.difference}
                   </td>

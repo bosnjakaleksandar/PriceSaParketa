@@ -25,6 +25,13 @@ collections:
           required: false,
           hint: 'Slika za karticu (opciono - ako se ne izabere, koristiće se fallback slika)',
         }
+      - {
+          label: 'Related English Post Slug',
+          name: 'relatedSlug',
+          widget: 'string',
+          required: false,
+          hint: 'Slug engleske verzije ovog posta (npr. "victory" za /en/blog/victory)',
+        }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Tags', name: 'tags', widget: 'list', default: ['post'] }
 
@@ -44,6 +51,13 @@ collections:
           widget: 'image',
           required: false,
           hint: 'Image for the card (optional - if not selected, fallback image will be used)',
+        }
+      - {
+          label: 'Related Serbian Post Slug',
+          name: 'relatedSlug',
+          widget: 'string',
+          required: false,
+          hint: 'Slug of the Serbian version of this post (e.g. "pobeda-partizana-domaći-teren-odbranjen")',
         }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Tags', name: 'tags', widget: 'list', default: ['post'] }
@@ -78,14 +92,7 @@ collections:
               name: 'description',
               widget: 'text',
               required: false,
-              hint: 'Opis ispod hero naslova (za home page)',
-            }
-          - {
-              label: 'Hero Subtitle',
-              name: 'subtitle',
-              widget: 'string',
-              required: false,
-              hint: 'Podnaslov ispod hero naslova (za blog page)',
+              hint: 'Opis/podnaslov ispod hero naslova',
             }
           - {
               label: 'Button Text',
