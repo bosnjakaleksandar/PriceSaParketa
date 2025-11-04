@@ -77,7 +77,15 @@ collections:
               label: 'Hero Description',
               name: 'description',
               widget: 'text',
-              hint: 'Opis ispod hero naslova',
+              required: false,
+              hint: 'Opis ispod hero naslova (za home page)',
+            }
+          - {
+              label: 'Hero Subtitle',
+              name: 'subtitle',
+              widget: 'string',
+              required: false,
+              hint: 'Podnaslov ispod hero naslova (za blog page)',
             }
           - {
               label: 'Button Text',

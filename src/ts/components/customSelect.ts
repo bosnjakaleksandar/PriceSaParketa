@@ -41,8 +41,13 @@ export function initCustomSelect() {
         const img = option.querySelector('img') as HTMLImageElement;
 
         if (img) {
-          flagImg.src = img.src;
-          flagImg.alt = img.alt;
+          const allFlags = document.querySelectorAll(
+            '.custom-select__flag'
+          ) as NodeListOf<HTMLImageElement>;
+          allFlags.forEach((f) => {
+            f.src = img.src;
+            f.alt = img.alt;
+          });
         }
 
         customSelect.classList.remove('active');

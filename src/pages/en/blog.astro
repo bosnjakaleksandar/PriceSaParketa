@@ -3,6 +3,9 @@ import { getCollection, type CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 const blogPosts = await getCollection('blog-en');
+const pages = await getCollection('pages');
+
+const blogPage = pages.find((page) => page.data.language === 'en' && page.slug === 'blog-en');
 
 const sortedPosts = blogPosts.sort(
   (a: CollectionEntry<'blog-en'>, b: CollectionEntry<'blog-en'>) =>
@@ -10,14 +13,14 @@ const sortedPosts = blogPosts.sort(
 );
 ---
 
-<Layout title="Blog - Stories from the Court">
+<Layout title={`${blogPage?.data.title || 'Blog'} - Priče sa parketa`} lang="en">
   <main class="homepage">
     <section class="hero-blog">
       <div class="hero-blog__container">
         <div class="hero-blog__content">
-          <h1 class="hero-blog__title rw-78-600">Blog</h1>
+          <h1 class="hero-blog__title rw-78-600">{blogPage?.data.hero.title || 'Blog'}</h1>
           <p class="hero-blog__subtitle rw-54-500">
-            Latest stories and analysis straight from the court
+            {blogPage?.data.hero.subtitle || blogPage?.data.hero.description || 'Latest stories and analysis straight from the court'}
           </p>
         </div>
       </div>

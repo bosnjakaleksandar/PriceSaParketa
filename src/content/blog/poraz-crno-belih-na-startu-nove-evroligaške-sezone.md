@@ -1,6 +1,6 @@
 ---
 title: Poraz crno-belih na startu nove evroligaške sezone!
-slug: poraz-crno-belih-na-startu-nove-evroligaske-sezone
+language: sr
 date: 2025-09-30T20:39:00.000+02:00
 description: Očekivao se gust meč protiv debitanta, ekipe Dubaija, ali ovakva
   dominacija u ofanzivi je bila nepremostiva prepreka za Partizan
@@ -9,6 +9,7 @@ tags:
   - dubai
   - euroleague
 ---
+
 ## Prva četvrtina
 
 Usporen početak, propraćen napadačkom rapsodijom Bertansa koji je postigao 12 poena već u prvoj četvrtini, sa druge strane nova pojačanja Partizana, Osetkovski i Parker, uspevali su u par navrata da uzvrate nalet ekipe Dubaija, međutim to nije bilo dovoljno i prva četvrtina završava rezultatom 28:18 u korist domaćina.
@@ -23,7 +24,7 @@ Na trenutak, delovalo je da ekipa Željka Obradovića može do potpunog preokret
 
 ## Četvrta četvrtina
 
-Nastavio je Bertans dominaciju sa početka meča, prosto danas je bio neumoljiv prema bivšem klubu, a onda se dodao i Filip Petrušev sa par lakih poena, što je bilo dovoljno da ekipa Dubaija ode na čak 22 poena razlike na 5:48  do kraja meča. Ulazak u igru Pokuševskog doneo je svima tračak nade da je preokret moguć, ubacivši dve brze trojke, Poku je na trenutak zagolicao maštu navijačima o mogućem preokretu, ipak zaostatk je bio previše velik, te je Partizan na samom kraju uspeo da ublaži poraz, izgubivši ovaj meč rezultatom 89:76.
+Nastavio je Bertans dominaciju sa početka meča, prosto danas je bio neumoljiv prema bivšem klubu, a onda se dodao i Filip Petrušev sa par lakih poena, što je bilo dovoljno da ekipa Dubaija ode na čak 22 poena razlike na 5:48 do kraja meča. Ulazak u igru Pokuševskog doneo je svima tračak nade da je preokret moguć, ubacivši dve brze trojke, Poku je na trenutak zagolicao maštu navijačima o mogućem preokretu, ipak zaostatk je bio previše velik, te je Partizan na samom kraju uspeo da ublaži poraz, izgubivši ovaj meč rezultatom 89:76.
 
 ## Zaključak
 

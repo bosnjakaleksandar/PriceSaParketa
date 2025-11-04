@@ -31,7 +31,8 @@ const pages = defineCollection({
     language: z.enum(['sr', 'en']),
     hero: z.object({
       title: z.string(),
-      description: z.string(),
+      description: z.string().optional(),
+      subtitle: z.string().optional(),
       buttonText: z.string().optional(),
       buttonLink: z.string().optional(),
     }),

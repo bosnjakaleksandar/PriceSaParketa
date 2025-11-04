@@ -1,6 +1,6 @@
 ---
 title: Pobeda Partizana, domaći teren odbranjen!
-slug: pobeda-partizana-domaći-teren-odbranjen
+language: sr
 date: 2025-10-11T16:52:00.000+02:00
 description: Partizan definitivno nije razočarao svoje navijače, fantastična
   utakmica izabranika Željka Obradovića!
@@ -9,6 +9,7 @@ tags:
   - efes
   - euroleague
 ---
+
 ## Partizan-Efes
 
 Fenomenalna utakmica crno-belih, krunisana pobedom!
@@ -23,7 +24,7 @@ Nastavili su igrači Partizana sa sjajnom igrom i u jednom momentu su stekli pre
 
 ### Treća četvrtina
 
-Prokletstvo treće četvrtine bilo je prisutno i na ovom meču, Partizan je uspeo da održi prednost sve do polovine treće deonice, ipak usled par loših  odluka i 8 bacanja dosuđenih u korist Efesa, rezultat na kraju ove deonice je bio 71-69 i time je anulirana prednost koju su crno-beli imali skoro tri četvrtine.
+Prokletstvo treće četvrtine bilo je prisutno i na ovom meču, Partizan je uspeo da održi prednost sve do polovine treće deonice, ipak usled par loših odluka i 8 bacanja dosuđenih u korist Efesa, rezultat na kraju ove deonice je bio 71-69 i time je anulirana prednost koju su crno-beli imali skoro tri četvrtine.
 
 ### Poslednja četvrtina
 
