@@ -43,7 +43,6 @@ function parseFixtures(xml: string) {
       awayteam: getTag('awayteam'),
       arenaname: getTag('arenaname'),
       arenacode: getTag('arenacode'),
-      arenacapacity: getTag('arenacapacity'),
       round: getTag('round'),
       group: getTag('group'),
     });
@@ -136,7 +135,7 @@ if (fixtures.length > 0) {
                   {fixture.date} {fixture.startime}
                 </div>
                 <div class="rw-16-500">
-                  {fixture.arenaname} ({fixture.arenacapacity})
+                  {fixture.arenaname}
                 </div>
               </div>
             </div>
