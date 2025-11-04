@@ -4,6 +4,19 @@ const blog = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
+    language: z.enum(['sr', 'en']).default('sr'),
+    description: z.string(),
+    date: z.date(),
+    image: z.string().optional(),
+    tags: z.array(z.string()).default(['post']),
+  }),
+});
+
+const blogEn = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    language: z.enum(['sr', 'en']).default('en'),
     description: z.string(),
     date: z.date(),
     image: z.string().optional(),
@@ -49,5 +62,6 @@ const pages = defineCollection({
 
 export const collections = {
   blog,
+  'blog-en': blogEn,
   pages,
 };

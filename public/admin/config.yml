@@ -9,12 +9,13 @@ public_folder: '/images/uploads'
 # Collections define the structure for the different content types
 collections:
   - name: 'blog'
-    label: 'Blog Posts'
+    label: 'Blog Posts (Srpski)'
     folder: 'src/content/blog'
     create: true
     slug: '{{title}}'
     fields:
       - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'sr' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - {
@@ -23,6 +24,26 @@ collections:
           widget: 'image',
           required: false,
           hint: 'Slika za karticu (opciono - ako se ne izabere, koristiće se fallback slika)',
+        }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+      - { label: 'Tags', name: 'tags', widget: 'list', default: ['post'] }
+
+  - name: 'blog-en'
+    label: 'Blog Posts (English)'
+    folder: 'src/content/blog-en'
+    create: true
+    slug: '{{title}}'
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Language', name: 'language', widget: 'hidden', default: 'en' }
+      - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+      - { label: 'Description', name: 'description', widget: 'string' }
+      - {
+          label: 'Image',
+          name: 'image',
+          widget: 'image',
+          required: false,
+          hint: 'Image for the card (optional - if not selected, fallback image will be used)',
         }
       - { label: 'Body', name: 'body', widget: 'markdown' }
       - { label: 'Tags', name: 'tags', widget: 'list', default: ['post'] }

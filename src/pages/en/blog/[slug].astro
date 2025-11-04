@@ -1,0 +1,54 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog-en');
+  return blogPosts.map((post: CollectionEntry<'blog-en'>) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<'blog-en'>;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout title={`${post.data.title} - Stories from the Court`}>
+  <main class="homepage">
+    <article class="blog-post">
+      <div class="blog-post__container">
+        <h1 class="rw-48-600">{post.data.title}</h1>
+        <div class="post-meta">
+          <time datetime={post.data.date.toISOString()} class="rw-16-400">
+            {
+              new Date(post.data.date).toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+              })
+            }
+          </time>
+        </div>
+        <div class="post-tags">
+          {post.data.tags.map((tag: string) => <span class="tag rw-14-500">{tag}</span>)}
+        </div>
+        <hr />
+
+        <p class="post-description rw-18-400">
+          {post.data.description}
+        </p>
+
+        <div class="post-content">
+          <Content />
+        </div>
+
+        <a href="/en/blog" class="back-link rw-24-500" data-svg="arrow-right">Back to blog</a>
+      </div>
+    </article>
+  </main>
+</Layout>
