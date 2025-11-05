@@ -41,6 +41,12 @@ try {
         break;
       }
     }
+    if (nextGameday) {
+      const gamedayNumber = parseInt(nextGameday);
+      if (!isNaN(gamedayNumber) && gamedayNumber > 1) {
+        nextGameday = String(gamedayNumber - 1);
+      }
+    }
   }
 } catch (e) {}
 
