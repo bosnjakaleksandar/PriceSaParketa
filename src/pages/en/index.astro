@@ -23,7 +23,7 @@ const { data: pageData } = homePage;
   <main class="homepage">
     <Hero
       title={pageData.hero.title}
-      subtitle={pageData.hero.description}
+      subtitle={pageData.hero.description ?? ''}
       buttonText={pageData.hero.buttonText || 'Latest episode'}
       buttonHref={pageData.hero.buttonLink || 'https://www.youtube.com/@Pri%C4%8Desaparketa1'}
       buttonIcon="play-circle"
