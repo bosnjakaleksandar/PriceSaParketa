@@ -18,11 +18,12 @@ const { data: pageData } = homePage;
   title={pageData.title + ' - Priče sa parketa'}
   description={pageData.hero.description +
     ' - Analize Evrolige, ABA lige i večitog derbija. Slušajte na Spotify, YouTube i Apple Podcasts.'}
+  ogImage="/images/HeroBanner.webp"
 >
   <main class="homepage">
     <Hero
       title={pageData.hero.title}
-      subtitle={pageData.hero.description}
+      subtitle={pageData.hero.description ?? ''}
       buttonText={pageData.hero.buttonText || 'Poslednja epizoda'}
       buttonHref={pageData.hero.buttonLink || 'https://www.youtube.com/@Pri%C4%8Desaparketa1'}
       buttonIcon="play-circle"
