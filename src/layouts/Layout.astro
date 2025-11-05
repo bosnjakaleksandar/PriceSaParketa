@@ -33,6 +33,26 @@ const enURL = currentPath.startsWith('/en/')
     : hasEnglishVersion && currentPath === '/evroliga'
       ? new URL('/en/euroleague', baseURL).href
       : null;
+
+// Structured Data
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Priče sa Parketa',
+  url: baseURL,
+  logo: `${baseURL}/favicon.png`,
+  description: 'Najpopularniji košarkaški podcast u Srbiji i regionu',
+  sameAs: ['https://www.youtube.com/@Pričesaparketa1', 'https://www.instagram.com/pricesaparketa/'],
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Priče sa Parketa',
+  url: baseURL,
+  description: 'Najpopularniji košarkaški podcast u Srbiji i regionu',
+  inLanguage: [lang],
+};
 ---
 
 <!doctype html>
@@ -102,6 +122,13 @@ const enURL = currentPath.startsWith('/en/')
       name="twitter:image"
       content="https://pricesaparketa.netlify.app/images/heroBanner.webp"
     />
+
+    <!-- Author -->
+    <meta name="author" content="Priče sa Parketa" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />
 
     <title>{title}</title>
 

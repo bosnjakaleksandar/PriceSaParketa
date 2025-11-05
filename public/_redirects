@@ -1,0 +1,10 @@
+# Redirects for Netlify
+
+# Redirect from backup-2 public folder if it exists
+/backup-2/* /404 404
+
+# Force HTTPS
+http://pricesaparketa.netlify.app/* https://pricesaparketa.netlify.app/:splat 301!
+
+# SPA fallback for 404s (if needed in future)
+# /* /index.html 200

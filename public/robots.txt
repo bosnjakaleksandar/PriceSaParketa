@@ -1,0 +1,29 @@
+# robots.txt for PriceSaParketa
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://pricesaparketa.netlify.app/sitemap-index.xml
+
+# Disallow admin and private areas
+User-agent: *
+Disallow: /admin/
+
+# Allow crawling of all public content
+User-agent: Googlebot
+Allow: /
+Allow: /blog/
+Allow: /evroliga/
+Allow: /en/
+Allow: /en/blog/
+Allow: /en/euroleague/
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
