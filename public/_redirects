@@ -6,5 +6,11 @@
 # Force HTTPS
 http://pricesaparketa.netlify.app/* https://pricesaparketa.netlify.app/:splat 301!
 
+[[redirects]]
+  from = "https://www.pricesaparketa.netlify.app/*"
+  to = "https://pricesaparketa.netlify.app/:splat"
+  status = 301
+  force = true
+
 # SPA fallback for 404s (if needed in future)
 # /* /index.html 200
