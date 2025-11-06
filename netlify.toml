@@ -4,3 +4,14 @@
 
 [context.production]
   environment = { NODE_VERSION = "20" }
+
+# Admin panel redirects
+[[redirects]]
+  from = "/admin"
+  to = "/admin/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/admin/"
+  to = "/admin/index.html"
+  status = 200
