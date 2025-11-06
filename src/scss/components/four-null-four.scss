@@ -1,0 +1,50 @@
+@use '../base' as *;
+@use 'sass:color';
+
+.error {
+    .error__container {
+        height: 100dvh;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        color: $white;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .error__code {
+        color: $orange;
+        text-shadow: 0 0 20px rgba($orange, 0.5);
+    }
+
+    .back-link {
+        background-color: $orange;
+        box-shadow: 0 0 15px rgba($orange, 0.5);
+        color: $white;
+        padding: 10px 20px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        gap: 10px;
+        transition: all 0.3s ease;
+
+        svg {
+            transform: rotate(180deg);
+            fill: $white;
+            transition: all 0.3s ease;
+        }
+
+        &:hover {
+            background-color: color.scale($orange, $lightness: -10%);
+            color: $black;
+
+            svg {
+                transform: translateX(-8px) rotate(180deg);
+                fill: $black;
+            }
+        }
+    }
+}

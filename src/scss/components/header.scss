@@ -1,5 +1,39 @@
 @use '../base' as *;
 
+.error-page-body .header {
+    background: rgba($orange, 0.9) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    .header__list {
+        .header__link {
+            color: $white;
+            transition: all 0.3s ease;
+            position: relative;
+            text-decoration: none;
+
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -5px;
+                left: 0;
+                width: 0;
+                height: 2px;
+                background-color: $black;
+                transition: width 0.3s ease;
+            }
+
+            &:hover {
+                color: $black;
+
+                &::after {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
 .header {
     position: fixed;
     top: 0;

@@ -47,6 +47,9 @@ line-height: calc(#{$line-height} / #{$size});
 // --------------------------------------------
 
 $font-variants: (
+    // Font Weight 800
+    "rw-200-800": ("rw", 200, 800, 220, null, ($lap-small: 144, $tablet: 144, $phone: 96)),
+
     // Font Weight 600
     "rw-78-600": ("rw", 78, 600, 82, null, ($lap-small: 48, $tablet: 48, $phone: 32)),
     "rw-48-600": ("rw", 48, 600, 56, null, ($lap-small: 36, $tablet: 36, $phone: 24)),
