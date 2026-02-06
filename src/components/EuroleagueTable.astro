@@ -16,7 +16,7 @@ try {
   const xml = await schedulesRes.text();
 
   const itemRegex = /<item>(.*?)<\/item>/g;
-  const fixtures = [];
+  const fixtures: { gameday: string; date: string; group: string }[] = [];
   let match;
   while ((match = itemRegex.exec(xml)) !== null) {
     const itemXml = match[1];
@@ -33,15 +33,40 @@ try {
 
   if (fixtures.length > 0) {
     const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const gamesByRound = new Map<string, typeof fixtures>();
     for (const fixture of fixtures) {
-      const fixtureDate = new Date(fixture.date);
-      if (fixtureDate >= today) {
-        nextGameday = fixture.gameday;
-        nextGroup = fixture.group;
-        break;
+      if (!gamesByRound.has(fixture.gameday)) {
+        gamesByRound.set(fixture.gameday, []);
       }
+      gamesByRound.get(fixture.gameday)!.push(fixture);
     }
-    if (nextGameday) {
+
+    const sortedRounds = Array.from(gamesByRound.entries())
+      .map(([gameday, games]) => {
+        const futureDates = games
+          .map((g) => {
+            const date = new Date(g.date);
+            date.setHours(0, 0, 0, 0);
+            return date;
+          })
+          .filter((d) => d >= today)
+          .sort((a, b) => a.getTime() - b.getTime());
+
+        return {
+          gameday,
+          games,
+          earliestFutureDate: futureDates[0] || null,
+        };
+      })
+      .filter((round) => round.earliestFutureDate !== null)
+      .sort((a, b) => a.earliestFutureDate!.getTime() - b.earliestFutureDate!.getTime());
+
+    if (sortedRounds.length > 0) {
+      nextGameday = sortedRounds[0].gameday;
+      nextGroup = sortedRounds[0].games[0].group;
+
       const gamedayNumber = parseInt(nextGameday);
       if (!isNaN(gamedayNumber) && gamedayNumber > 1) {
         nextGameday = String(gamedayNumber - 1);
@@ -60,7 +85,7 @@ try {
     } else if (contentType.includes('xml') || contentType.includes('text/xml')) {
       const xmlText = await response.text();
       const teamRegex = /<team>([\s\S]*?)<\/team>/g;
-      const teamsArr = [];
+      const teamsArr: any[] = [];
       let match;
       while ((match = teamRegex.exec(xmlText)) !== null) {
         const teamBlock = match[1];

@@ -31,7 +31,17 @@ function parseFixtures(xml: string) {
   xml = xml.replace(/\r?\n|\r/g, '').replace(/\s{2,}/g, ' ');
 
   const itemRegex = /<item>(.*?)<\/item>/g;
-  const items = [];
+  const items: Array<{
+    gameday: string;
+    date: string;
+    startime: string;
+    hometeam: string;
+    awayteam: string;
+    arenaname: string;
+    arenacode: string;
+    round: string;
+    group: string;
+  }> = [];
   let match;
   while ((match = itemRegex.exec(xml)) !== null) {
     const itemXml = match[1];
@@ -86,16 +96,42 @@ let nextGameday = '';
 let nextFixtures: typeof fixtures = [];
 if (fixtures.length > 0) {
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   function parseDate(dateStr: string) {
-    return new Date(dateStr);
+    const date = new Date(dateStr);
+    date.setHours(0, 0, 0, 0);
+    return date;
   }
+
+  const gamesByRound = new Map<string, typeof fixtures>();
   for (const fixture of fixtures) {
-    const fixtureDate = parseDate(fixture.date);
-    if (fixtureDate >= today) {
-      nextGameday = fixture.gameday;
-      break;
+    if (!gamesByRound.has(fixture.gameday)) {
+      gamesByRound.set(fixture.gameday, []);
     }
+    gamesByRound.get(fixture.gameday)!.push(fixture);
   }
+
+  const sortedRounds = Array.from(gamesByRound.entries())
+    .map(([gameday, games]) => {
+      const futureDates = games
+        .map((g) => parseDate(g.date))
+        .filter((d) => d >= today)
+        .sort((a, b) => a.getTime() - b.getTime());
+
+      return {
+        gameday,
+        games,
+        earliestFutureDate: futureDates[0] || null,
+      };
+    })
+    .filter((round) => round.earliestFutureDate !== null)
+    .sort((a, b) => a.earliestFutureDate!.getTime() - b.earliestFutureDate!.getTime());
+
+  if (sortedRounds.length > 0) {
+    nextGameday = sortedRounds[0].gameday;
+  }
+
   nextFixtures = fixtures.filter((f) => f.gameday === nextGameday);
 }
 ---
