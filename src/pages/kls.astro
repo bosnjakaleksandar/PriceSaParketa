@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import HeroSmall from '../components/HeroSmall.astro';
+import KlsTable from '../components/KlsTable.astro';
+
+const pages = await getCollection('pages');
+const pageData = pages.find((page) => page.data.language === 'sr' && page.slug === 'kls');
+
+const title = pageData?.data.title || 'Kosarkaška liga Srbije';
+const description = pageData?.data.hero.description || 'Pregled tabele i rasporeda utakmica';
+---
+
+<Layout title={title + ' - Priče sa parketa'} description={description} lang="sr">
+  <main class="kls">
+    <HeroSmall title={title} description={description} />
+    <KlsTable />
+  </main>
+</Layout>

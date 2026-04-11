@@ -9,6 +9,7 @@ const translations = {
   sr: {
     home: 'Početna',
     euroleague: 'Evroliga',
+    kls: 'KLS',
     blog: 'Blog',
     // episodes: 'Epizode',
     // about: 'O meni',
@@ -16,6 +17,7 @@ const translations = {
   },
   en: {
     home: 'Home',
+    kls: 'KLS',
     euroleague: 'Euroleague',
     blog: 'Blog',
     // episodes: 'Episodes',
@@ -43,9 +45,10 @@ const t = translations[lang];
           >
         </li>
         <li class="header__item">
-          <a href={lang === 'en' ? '/en/blog' : '/blog'} class="header__link rw-24-500"
-            >{t.blog}</a
-          >
+          <a href={lang === 'en' ? '/en/kls' : '/kls'} class="header__link rw-24-500">{t.kls}</a>
+        </li>
+        <li class="header__item">
+          <a href={lang === 'en' ? '/en/blog' : '/blog'} class="header__link rw-24-500">{t.blog}</a>
         </li>
         <!-- <li class="header__item">
           <a href="/coming-soon" class="header__link rw-24-500">{t.episodes}</a>

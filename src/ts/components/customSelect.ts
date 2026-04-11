@@ -25,6 +25,8 @@ export function initCustomSelect() {
     const slugMap: Record<string, string> = {
       '/evroliga': '/en/euroleague',
       '/en/euroleague': '/evroliga',
+      '/en/kls': '/kls',
+      '/kls': '/en/kls',
       '/blog': '/en/blog',
       '/en/blog': '/blog',
       '/': '/en',

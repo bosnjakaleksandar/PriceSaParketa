@@ -1,0 +1,24 @@
+@use '../base' as *;
+@use 'sass:color';
+
+.kls-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: 5%;
+
+    .powered-by {
+        margin-top: 20px;
+        color: $white;
+
+        a {
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: $orange;
+        }
+    }
+}
