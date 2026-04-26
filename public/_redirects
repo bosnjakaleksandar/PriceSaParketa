@@ -1,16 +1,18 @@
 # Blokiraj backup folder
-
 /backup-2/* /404 404
 
-# Redirect sa Netlify domena na .rs
+# 1. SPECIFIČNI REDIREKTI (Ovo rešava GSC grešku za obrisani post)
+# Šaljemo ga na root bloga kako bi GSC na kraju lanca dobio "200 OK"
+https://pricesaparketa.netlify.app/blog/pobeda-srbije-u-poslednjoj-proveri-pred-eurobasket/ https://pricesaparketa.rs/blog/ 301!
+/blog/pobeda-srbije-u-poslednjoj-proveri-pred-eurobasket/ https://pricesaparketa.rs/blog/ 301!
 
+# 2. EKSPLICITNI REDIREKT POČETNE STRANICE (Osigurava prolaz za GSC "Obaveznu proveru")
+https://pricesaparketa.netlify.app/ https://pricesaparketa.rs/ 301!
+http://pricesaparketa.netlify.app/ https://pricesaparketa.rs/ 301!
+
+# 3. OPŠTI REDIREKT SA NETLIFY DOMENA NA .RS (Catch-all)
 https://pricesaparketa.netlify.app/* https://pricesaparketa.rs/:splat 301!
 http://pricesaparketa.netlify.app/* https://pricesaparketa.rs/:splat 301!
 
-# Redirect www → non-www (.rs)
-
+# 4. REDIREKT www → non-www (.rs)
 https://www.pricesaparketa.rs/* https://pricesaparketa.rs/:splat 301!
-
-# (opciono) SPA fallback
-
-# /* /index.html 200
