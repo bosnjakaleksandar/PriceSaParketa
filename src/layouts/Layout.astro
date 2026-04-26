@@ -20,7 +20,7 @@ const {
   isErrorPage = false,
 } = Astro.props;
 
-const baseURL = 'https://pricesaparketa.netlify.app';
+const baseURL = 'https://pricesaparketa.rs';
 const currentCanonicalURL = canonicalURL || new URL(Astro.url.pathname, baseURL).href;
 
 const currentPath = Astro.url.pathname;
@@ -158,7 +158,7 @@ const websiteSchema = {
     <Footer lang={lang} />
 
     <script>
-      import '../main.ts';
+      import '../main';
     </script>
   </body>
 </html>

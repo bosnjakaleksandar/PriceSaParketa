@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://pricesaparketa.netlify.app',
+  site: 'https://pricesaparketa.rs',
   output: 'static',
   trailingSlash: 'ignore',
   integrations: [sitemap()],

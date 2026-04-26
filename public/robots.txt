@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://pricesaparketa.netlify.app/sitemap-index.xml
+Sitemap: https://pricesaparketa.rs/sitemap-index.xml
 
 # Disallow admin and private areas
 User-agent: *
