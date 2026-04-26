@@ -23,6 +23,6 @@ Sloboda je jedno od većih iznenađenja ove sezone, pravi odnos mladosti i iskus
 
 Pre svega, nadam se da će za ove utakmice trener Penjaroja uvrstiti u sastav momke koji cele sezone igraju u Metalcu iz Valjeva, Uroša Danilovića i Đorđa Šekularca, koji imaju fenomenalne debitantske sezone iza sebe. Ima tu još igrača koje bi voleo da vidim, Mitra Bošnjakovića koji ove godine nije uspeo da zadobije poverenje trenera, kao i Pokuševskog za kog sam siguran da će odigrati ozbiljnu ulogu ukoliko mu se pruži dovoljna minutaža!
 
-A sada malo o momcima iz Užica, ekipu predvodi sjajan strelac Đorđe Božić koji ove godine u proseku beleži 18,2 poena po utakmici kao 6,2 asistencije, pored njega tu su malo iskusniji igrači, Stefan Simić i Mladen Šuškavčević koji pretenduje na mesto najboljeg centra Košarkaške lige Srbija, takođe i mlade nade Vasilije Jovanović, Dimitrije Kondić i Petar Milosavčević.
+A sada malo o momcima iz Užica, ekipu predvodi sjajan strelac Đorđe Božić koji ove godine u proseku beleži 18,2 poena po utakmici kao 6,2 asistencije, pored njega tu su malo iskusniji igrači, Stefan Simić i Mladen Šuškavčević koji pretenduje na mesto najboljeg centra Košarkaške lige Srbije, takođe i mlade nade Vasilije Jovanović, Dimitrije Kondić i Petar Milosavčević.
 
 #### Zaključak je isti, lopta je okrugla, nema opuštanja za večite, za ove momke ovakve utakmice su ono o čemu sanjaju i siguran sam da neće propusiti priliku da pokažu čime raspolažu u svojim arsenalima, a Vama dragi čitaoci želim prijatan ostatak vikenda!
