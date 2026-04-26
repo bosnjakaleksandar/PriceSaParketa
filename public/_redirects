@@ -2,14 +2,9 @@
 
 /backup-2/* /404 404
 
-# Redirect sa Netlify domena na .rs
+# Global Redirect sa Netlify domena na .rs
 
-https://pricesaparketa.netlify.app/* https://pricesaparketa.rs/:splat 301!
-http://pricesaparketa.netlify.app/* https://pricesaparketa.rs/:splat 301!
-
-# Redirect www → non-www (.rs)
-
-https://www.pricesaparketa.rs/* https://pricesaparketa.rs/:splat 301!
+/* https://pricesaparketa.rs/:splat 301!
 
 # (opciono) SPA fallback
 
