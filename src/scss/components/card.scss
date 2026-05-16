@@ -3,6 +3,7 @@
 .card {
     .card__container {
         margin: 5% 7%;
+        width: auto;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -15,6 +16,7 @@
 
     .card__content {
         color: $white;
+        min-width: 0;
         max-width: 50%;
     }
 
@@ -41,6 +43,7 @@
     }
 
     .card__link {
+        min-width: 0;
         transition: all 0.3s ease;
 
         img {
@@ -119,6 +122,50 @@
     .derby {
         .derby__container {
             padding: 30px;
+            padding-top: 0;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        .card__container {
+            margin: 40px 5%;
+            padding: 24px;
+            padding-bottom: 0;
+            border-radius: 18px;
+        }
+
+        .card__title {
+            margin-bottom: 16px;
+        }
+
+        .card__links {
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .card__link {
+            flex: 1 1 0;
+        }
+
+        .card__image {
+            img {
+                max-width: min(100%, 360px);
+            }
+        }
+    }
+
+    .euroleague {
+        .euroleague__container {
+            padding: 24px;
+            padding-top: 0;
+        }
+    }
+
+    .derby {
+        .derby__container {
+            padding: 24px;
             padding-top: 0;
         }
     }
