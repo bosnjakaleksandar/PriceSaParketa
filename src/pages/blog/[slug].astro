@@ -31,26 +31,36 @@ const { Content } = await post.render();
   <main class="homepage">
     <article class="blog-post">
       <div class="blog-post__container">
-        <h1 class="rw-48-600">{post.data.title}</h1>
-        <div class="post-meta">
-          <time datetime={post.data.date.toISOString()} class="rw-16-400">
-            {
-              new Date(post.data.date).toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })
-            }
-          </time>
-        </div>
-        <div class="post-tags">
-          {post.data.tags.map((tag: string) => <span class="tag rw-14-500">{tag}</span>)}
-        </div>
-        <hr />
+        <header class="blog-post__hero">
+          <div class="blog-post__hero-image">
+            <img src={post.data.image || '/images/heroBlog.webp'} alt={post.data.title} />
+          </div>
 
-        <p class="post-description rw-18-400">
-          {post.data.description}
-        </p>
+          <div class="blog-post__hero-copy">
+            <p class="blog-post__eyebrow rw-14-500">Blog post</p>
+            <h1 class="rw-48-600">{post.data.title}</h1>
+
+            <div class="post-meta">
+              <time datetime={post.data.date.toISOString()} class="rw-16-400">
+                {
+                  new Date(post.data.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })
+                }
+              </time>
+            </div>
+
+            <div class="post-tags">
+              {post.data.tags.map((tag: string) => <span class="tag rw-14-500">{tag}</span>)}
+            </div>
+
+            <p class="post-description rw-18-400">
+              {post.data.description}
+            </p>
+          </div>
+        </header>
 
         <div class="post-content">
           <Content />

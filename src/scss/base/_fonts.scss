@@ -80,8 +80,16 @@ $font-variants: (
     $size: list.nth($vals, 2);
     $weight: list.nth($vals, 3);
     $line-height: list.nth($vals, 4);
-    $letter-spacing: if(list.length($vals) >=5 and list.nth($vals, 5) !=null, list.nth($vals, 5), null);
-    $responsive-map: if(list.length($vals) >=6, list.nth($vals, 6), null);
+    $letter-spacing: null;
+    $responsive-map: null;
+
+    @if list.length($vals)>=5 and list.nth($vals, 5) !=null {
+        $letter-spacing: list.nth($vals, 5);
+    }
+
+    @if list.length($vals)>=6 {
+        $responsive-map: list.nth($vals, 6);
+    }
 
     .#{$class} {
         @include font-style($family, $size, $weight, $line-height, $letter-spacing);
