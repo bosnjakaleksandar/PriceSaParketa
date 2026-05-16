@@ -25,6 +25,7 @@
     .card__image {
 
         img {
+            display: block;
             width: 100%;
             height: auto;
             max-height: 600px;
@@ -92,6 +93,19 @@
 
         .card__links {
             gap: 7px;
+        }
+
+        .card__link {
+            flex: 1 1 0;
+        }
+
+        .card__image {
+            width: 100%;
+
+            img {
+                margin: 0 auto;
+                max-width: min(100%, 420px);
+            }
         }
     }
 
