@@ -5,7 +5,7 @@ export interface Props {
 
 const { lang } = Astro.props;
 
-const schedulesRes = await fetch('https://api-live.euroleague.net/v1/schedules?seasonCode=e2025');
+const schedulesRes = await fetch('https://api-live.euroleague.net/v1/schedules?seasonCode=e2026');
 const clubsRes = await fetch('https://api-live.euroleague.net/v2/clubs');
 const xml = await schedulesRes.text();
 
@@ -37,6 +37,8 @@ function parseFixtures(xml: string) {
     startime: string;
     hometeam: string;
     awayteam: string;
+    homecode: string;
+    awaycode: string;
     arenaname: string;
     arenacode: string;
     round: string;
@@ -57,6 +59,8 @@ function parseFixtures(xml: string) {
       startime: getTag('startime'),
       hometeam: getTag('hometeam'),
       awayteam: getTag('awayteam'),
+      homecode: getTag('homecode'),
+      awaycode: getTag('awaycode'),
       arenaname: getTag('arenaname'),
       arenacode: getTag('arenacode'),
       round: getTag('round'),
@@ -75,7 +79,8 @@ function normalize(str: string) {
     .trim();
 }
 
-function findCrestForTeam(teamName: string) {
+function findCrestForTeam(teamName: string, code?: string) {
+  if (code && clubLogosByCode[code]) return clubLogosByCode[code];
   if (!teamName) return '';
   const key = normalize(teamName);
   if (key.includes('hapoel') && key.includes('telaviv')) {
@@ -155,18 +160,18 @@ if (fixtures.length > 0) {
               <div class="fixture">
                 <div class="fixture__teams">
                   <div class="fixture__team">
-                    {findCrestForTeam(fixture.hometeam) ? (
+                    {findCrestForTeam(fixture.hometeam, fixture.homecode) ? (
                       <img
-                        src={findCrestForTeam(fixture.hometeam)}
+                        src={findCrestForTeam(fixture.hometeam, fixture.homecode)}
                         alt={`${fixture.hometeam} crest`}
                       />
                     ) : null}
                   </div>
                   <div class="fixture__vs rw-32-500">vs</div>
                   <div class="fixture__team">
-                    {findCrestForTeam(fixture.awayteam) ? (
+                    {findCrestForTeam(fixture.awayteam, fixture.awaycode) ? (
                       <img
-                        src={findCrestForTeam(fixture.awayteam)}
+                        src={findCrestForTeam(fixture.awayteam, fixture.awaycode)}
                         alt={`${fixture.awayteam} crest`}
                       />
                     ) : null}
